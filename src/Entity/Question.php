@@ -66,10 +66,27 @@ class Question
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
+	
+	/**
+     * @var integer
+     */
+    private $user_answer;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+	
+	public function setUserAnswer(int $user_answer) : self
+    {
+        $this->user_answer = $user_answer;
+
+        return $this;
+    }
+
+    public function getUserAnswer() : int
+    {
+        return $this->user_answer;
     }
 
     public function getQuery(): ?string

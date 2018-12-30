@@ -19,32 +19,14 @@ class QualificationRepository extends ServiceEntityRepository
         parent::__construct($registry, Qualification::class);
     }
 
-    // /**
-    //  * @return Qualification[] Returns an array of Qualification objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByStageId(int $id)
     {
-        return $this->createQueryBuilder('q')
-            ->andWhere('q.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('q.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $query = $this->createQueryBuilder('q')
+            ->join('q.stages', 's')
+            ->where('s = ?1')
+            ->setParameter(1, $id)
+            ->getQuery();
+        
+        return $query->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Qualification
-    {
-        return $this->createQueryBuilder('q')
-            ->andWhere('q.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
