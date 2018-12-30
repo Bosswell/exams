@@ -1,0 +1,23 @@
+.qualification-title {
+  margin-right: 15px;
+  border-bottom: 2px solid #000;
+  max-width: 600px;
+  color: rgb(86, 191, 209);
+  text-transform: none;
+  font-weight: 300;
+  padding-bottom: 5px
+}
+
+.qualification-choose-stage-container {
+  padding-top: 20px;
+  padding-bottom: 60px
+}
+
+.under-title {
+  font-size: 18px;
+  color:grey
+}
+
+.qualifcation {
+  margin-right: 140px !important;
+}

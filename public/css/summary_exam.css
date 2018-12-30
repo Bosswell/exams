@@ -1,0 +1,85 @@
+.checkbox-label {
+    cursor: default;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.summary-container {
+    padding: 0 15px;
+}
+
+.summary-info {
+    margin-left: 150px;
+    margin-top: 100px;
+}
+
+.summary-header {
+    font-size: 26px;
+}
+
+@media (max-width: 767px) {
+    .summary-container {
+        margin-left: 0;
+    }
+
+    .summary-info {
+        margin-left: 0;
+    }
+
+    .summary-header {
+        font-size: 20px;
+    }
+}
+
+.percent-label {
+    font-size: 50px;
+    position: absolute;
+    left: 85px;
+    top: -10px;
+}
+
+.exam-percent-container {
+    position: relative
+}
+
+.summary-devider {
+    margin-right: -15px;
+    margin-left: 100px;
+    margin-bottom: 10px
+}
+
+@media (max-width: 767px) {
+    .summary-devider {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.question-group {
+    display: none;
+    margin-bottom: 50px
+}
+
+.title-section {
+    padding-top: 150px;
+}
+
+.summary-big-container {
+    padding: 0 15px;
+}
+
+.bottom-btn-container {
+    margin-top: 100px
+}
+
+.bottom-btn-container .center-btn {
+    display: block;
+    text-align: center
+}
+
+.question-group:first-child {
+    display: none;
+}

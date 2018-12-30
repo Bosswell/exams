@@ -1,0 +1,82 @@
+#container {
+    max-width: 950px;;
+    height: 100%;
+}
+  
+#egzaminy {
+    padding-top: 100px;
+}
+  
+#egzaminy .title {
+    padding-bottom: 5px;
+    border-bottom: 3px solid #000;
+    color: rgb(86, 191, 209);
+}
+  
+#egzaminy img:hover,
+#next img:hover {
+    cursor: pointer;
+}
+  
+.hidden {
+    display:none;
+}
+  
+.choose {
+    display: none;
+    font-size: 17px;
+    color: #000;
+    cursor: pointer;
+    z-index: 100;
+}
+  
+.job-container {
+    margin-bottom: 30px;
+}
+  
+.job-img-container {
+    float: left;
+}
+  
+.job-img {
+    width: 100px;
+    height: 100px;
+}
+  
+.job-info {
+    float: left;
+    padding-left: 15px;
+    width: calc(100% - 110px);
+    border-bottom: 1px solid #000;
+    padding-bottom: 40px;
+}
+  
+.info-text {
+    color: grey;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.info-title a {
+    color: #000;
+}
+
+.info-title a:hover {
+    text-decoration: none;
+    color: #a9a9a9;
+}
+
+.info-text a:hover {
+    text-decoration: none;
+}
+  
+.description {
+    color: grey;
+    font-weight: 400;
+}
+  
+.info-title {
+    font-size: 20px;
+}
+  

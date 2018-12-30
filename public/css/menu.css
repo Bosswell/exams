@@ -1,0 +1,104 @@
+.menu{
+    background-color: #252525;
+    min-height: 60px;
+}
+
+.menu .menu-right{
+    float: right;
+}
+
+.menu .menu-left{
+    float:left;
+}
+
+.menu .menu-bar{
+    line-height:60px;
+    height: 60px;
+    padding: 0px 10px;
+    float: left;
+    position:relative;
+}
+
+body{
+    background-color:#4C4C4C;
+    color: #DDD !important;
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+.menu .menu-bar:hover{
+    background-color: darkred;
+}
+
+.slide-menu{
+    width:200px;
+    height:320px;
+    border-radius:5px;
+    position:absolute;
+    top:0;
+    right:0;
+    margin-top:65px;
+    margin-right:10px;
+    display:none;
+    background-color: #eee;
+    border:1px solid #e3e3e3;
+    color:black;
+    text-align:center;    
+}
+
+.slide-menu label{
+    text-align: left;
+}
+
+.slide-menu input{
+    width:190px;
+    height:30px;
+    font-size: 18px;
+    margin-top:10px;
+	outline: none;
+}
+
+.menu a{
+    text-decoration: none !important;
+    display: block !important;
+    color: #DDD !important;
+}
+
+.menu a:hover{
+    color:#EEE !important;
+}
+
+@media screen and (max-width: 1000px){
+    
+    .menu{
+        overflow:hidden;
+        text-align: center;
+    }
+
+    .menu .menu-right{
+        float:none;
+    }
+
+    .menu .menu-left{
+        float:none;
+    }
+
+    .menu .menu-bar{
+        float:none;
+        border-bottom: 1px dashed #000;
+    }
+
+    .menu .show-menu{
+        display:block;
+    }
+
+    .slide-menu{
+        position:static;
+        margin-left: auto;
+        margin-right: auto;
+        display:none;
+        margin-top:10px;   
+    }
+
+}
