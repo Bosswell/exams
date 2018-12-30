@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/checkboxes.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/page-layout-helpers.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/qualification.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+  <section style="padding-top:200px;">
+    <h1 class="qualification-title">
+      <label class="left-white-space">Technik informatyk</label>
+    </h1>
+  </section>
+
+  <main>
+    <form id="qualification-form" method="POST" action="{{ path('generate_exam') }}">
+      <section class="qualification-choose-stage-container">
+        <div class="left-white-space">
+          <p class="text-faded under-title">wybierz swoją kwalifikacje</p>
+          <div id="qualifications">
+            <input id="qualification-id" type="hidden" name="qualification_id">
+            {% for qualification in qualifications %}
+              <div class="checkbox-group qualifcation" data-value="{{ qualification.id }}">
+                <div class="checkbox"></div>
+                <label class="checkbox-label">Kwalifikacja {{ qualification.designation }}</label>
+              </div>
+            {% endfor %}
+            <div style="clear:both"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-question-quantity">
+        <div class="left-white-space">
+          <div class="devider"></div>
+          <p class="text-faded under-title">oraz ilość pytań</p>
+          <div id="questions-quantity">
+            <input id="question-quantity" type="hidden" name="question_quantity">
+            <div class="checkbox-group" data-value="5">
+              <div class="checkbox"></div>
+              <label class="checkbox-label">5 pytań</label>
+            </div>
+            <div class="checkbox-group" data-value="10">
+              <div class="checkbox"></div>
+              <label class="checkbox-label">10 pytań</label>
+            </div>
+            <div class="checkbox-group" data-value="20">
+              <div class="checkbox"></div>
+              <label class="checkbox-label">20 pytań</label>
+            </div>
+            <div class="checkbox-group" data-value="40">
+              <div class="checkbox"></div>
+              <label class="checkbox-label">40 pytań</label>
+            </div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
+      </section>
+
+      <div id="errors-container" class="left-white-space"></div>
+
+      <div class="bottom-btn-container">
+        <input type="submit" class="btn-nav center-btn" value="Rozpocznij test">
+      </div>
+
+    </form>
+  </main>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/qualifications.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+{% endblock %}

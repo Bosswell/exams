@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/checkboxes.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/page-layout-helpers.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/universal.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/exam.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/summary_exam.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+    <section class="title-section">
+      <h1 class="qualification-title-header">
+        <label class="qualification-title left-white-space">twój wynik testu</label>
+      </h1>
+    </section>
+
+    <main>
+        <section>
+          <div class="left-white-space">
+            <div id="questions-panel">
+                {% for question in questions %}
+                    {% if loop.index0 % 2 == 0 %}
+                        <div class="column">
+                    {% endif %}
+                        <div data-question-number="{{ loop.index0 }}" class="square {% if question.userAnswer != question.correct %}square-false{% else %}square-correct{% endif %}"></div>
+                    {% if (loop.index % 2 == 0) %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% if questions|length % 2 == 1 %}
+                    </div>
+                {% endif %}
+                <p id="quick-view"></p>  
+                <div style="clear:both"></div>  
+            </div>     
+          </div>
+        </section>
+
+        <section>
+          <div class="left-white-space summary-big-container">
+            {% for question in questions %}
+                <div class="question-group row">
+                    <div class="col-lg-12">
+                        <p class="text-faded text-before-devider">pytanie {{ loop.index }} z {{ question_quantity }}</p>
+
+                        <div class="devider summary-devider"></div>
+
+                        <label>{{ loop.index }}. <span class="query">{{ question.query | raw }}</span></label>
+
+                        <div class="row">
+                            <div class="col-lg-{% if question.imageName %}6{% else %}12{% endif %}">
+                                <div data-question-number="{{ loop.index0 }}" class="answers-group">
+                                    <div class="column question-panel-margin">
+                                        <div class="checkbox-group answer {% if question.correct == 1 %}checkbox-correct{% elseif question.userAnswer == 1 %}checkbox-false{% else %} {% set neutral = true %} {% endif %}">
+																						{% if (neutral is defined) and (neutral == true) %}
+																							<div class="checkbox"></div>
+																							{% set neutral = false %}
+																						{% endif %}
+                                            <label class="checkbox-label">{{ question.answerA | raw }}</label>
+                                        </div>
+                                        <div class="checkbox-group answer {% if question.correct == 2 %}checkbox-correct{% elseif question.userAnswer == 2 %}checkbox-false{% else %} {% set neutral = true %}{% endif %}">
+																						{% if (neutral is defined) and (neutral == true) %}
+																							<div class="checkbox"></div>
+																							{% set neutral = false %}
+																						{% endif %}
+                                            <label class="checkbox-label">{{ question.answerB | raw }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="checkbox-group answer {% if question.correct == 3 %}checkbox-correct{% elseif question.userAnswer == 3 %}checkbox-false{% else %} {% set neutral = true %}{% endif %}">
+																						{% if (neutral is defined) and (neutral == true) %}
+																							<div class="checkbox"></div>
+																							{% set neutral = false %}
+																						{% endif %}
+                                            <label class="checkbox-label">{{ question.answerC | raw }}</label>
+                                        </div>
+                                        <div class="checkbox-group answer {% if question.correct == 4 %}checkbox-correct{% elseif question.userAnswer == 4 %}checkbox-false{% else %} {% set neutral = true %}{% endif %}">
+                                            {% if (neutral is defined) and (neutral == true) %}
+																							<div class="checkbox"></div>
+																							{% set neutral = false %}
+																						{% endif %}
+																						<label class="checkbox-label">{{ question.answerD | raw }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if question.imageName %}
+                                <div class="col-lg-6">                                   
+                                    <img class="img-fluid" src="{{ asset('uploads/exams/'~question.imageName) }}"/>
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+            <div style="clear:both"></div>
+          </div>
+        </section>
+			<section>
+				<div class="left-white-space summary-container">
+					<div class="row">
+						<div class="col-lg-12">
+							<p class="text-faded text-before-devider">sprawdź udzielone prze Ciebie odpowiedzi klikając w odpowiednie kratki</p>
+							<div class="devider summary-devider"></div>
+							<div class="summary-info">
+								<h2 class="summary-header">Ilość poprawnych odpowiedzi: {{ points }}</h2>
+								<h2 class="summary-header">Ilość złych odpowiedzi: {{ question_quantity - points }} </h2>
+								<div class="exam-percent-container">
+									<h2 class="summary-header">Wynik:</h2>
+									<p class="percent-label">{{ percent }} %</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<div class="bottom-btn-container">
+                <a href="{{ path('stage', {'id': current_stage}) }}" class="btn-nav center-btn">Wylosuj kolejny test</a>
+					{% if app.user %}
+						<input type="submit" class="btn-nav right-btn" value="Dodaj do satystyk">
+					{% endif %}
+            </div>
+    </main>
+    
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+	<script src="{{ asset('js/exam_summary.js') }}"></script>
+    
+{% endblock %}
+

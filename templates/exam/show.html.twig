@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/checkboxes.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/page-layout-helpers.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/universal.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/exam.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+    <section style="padding-top:150px;">
+      <h1 class="qualification-title-header">
+        <label class="qualification-title left-white-space">Kwalifikacja {{ qualification.designation }} - {{ qualification.description }}</label>
+      </h1>
+    </section>
+
+    <main>
+      <form id="exam-form" method="POST" action="{{ path('check_exam') }}">
+        <section>
+          <div class="left-white-space">
+            <div id="questions-panel">
+                {% for question in questions %}
+                    {% if loop.index0 % 2 == 0 %}
+                        <div class="column">
+                    {% endif %}
+                        <div data-question-number="{{ loop.index0 }}" data-is-filled="false" class="square {% if loop.index0 == 0 %} square-active{% else %} square-empty{% endif %}"></div>
+                    {% if (loop.index % 2 == 0) %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% if questions|length % 2 == 1 %}
+                    </div>
+                {% endif %}
+                <p id="quick-view"></p>  
+                <div style="clear:both"></div>  
+            </div>
+
+            {% for question in questions %}
+                <div class="question-group" {% if loop.index == 1 %} style="display:block" {% endif %}>
+                    <div style="padding: 0 15px;">
+                        <p class="text-faded text-before-devider">pytanie {{ loop.index }} z {{ question_quantity }}</p>
+                        <div class="devider" style="margin-left: 100px;margin-bottom:10px;margin-right: -15px"></div>
+
+                        {{ loop.index }}. <span class="query">{{ question.query | raw }}</span>
+
+                        <div class="row">
+                            <div class="col-lg-{% if question.imageName %}6{% else %}12{% endif %}">
+                                <div data-question-number="{{ loop.index0 }}" class="answers-group">
+                                    <input class="user_answer" type="hidden" name="answers[{{ loop.index0 }}]" value="">
+                                    <div class="column question-panel-margin">
+                                        <div class="checkbox-group answer" data-value="1">
+                                            <div class="checkbox"></div>
+                                            <label class="checkbox-label">{{ question.answerA | raw }}</label>
+                                        </div>
+                                        <div class="checkbox-group answer" data-value="2">
+                                            <div class="checkbox"></div>
+                                            <label class="checkbox-label">{{ question.answerB | raw }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="checkbox-group answer" data-value="3">
+                                            <div class="checkbox"></div>
+                                            <label class="checkbox-label">{{ question.answerC | raw }}</label>
+                                        </div>
+                                        <div class="checkbox-group answer" data-value="4">
+                                            <div class="checkbox"></div>
+                                            <label class="checkbox-label">{{ question.answerD | raw }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if question.imageName %}
+                                <div class="col-lg-6">                                   
+                                    <img class="img-fluid" src="{{ asset('uploads/exams/'~question.imageName) }}"/>
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+            <div style="clear:both"></div>     
+          </div>
+        </section>
+
+        <div id="errors-container" class="left-white-space"></div>
+
+        <div class="bottom-btn-container">
+            <div id="next-question" class="btn-nav center-btn">Następne pytanie</div>
+            <input type="submit" class="btn-nav right-btn" value="Sprawdź test">
+        </div>
+      </form>
+    </main>
+    
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="{{ asset('js/exam.js') }}"></script>
+    
+{% endblock %}
+
