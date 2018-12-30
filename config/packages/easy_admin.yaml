@@ -1,0 +1,64 @@
+easy_admin:
+    site_name: 'Panel administracyjny'
+    entities:
+        Qualification:
+            class: App\Entity\Qualification
+            new:
+                title: 'Dodaj kwalifikacje'
+                label: 'Kwalifikacje'
+            label: 'Kwalifikacje'
+            list:
+                title: '%%entity_label%%'
+                fields:
+                    - id
+                    - { property: 'designation', label: 'Kod' }
+                    - { property: 'description', label: 'Opis' }
+            form:
+                fields:
+                    - { property: 'designation', type: 'text', label: 'Kod'}
+                    - { property: 'description', type: 'textarea', label: 'Opis' }
+
+        Stage:
+            class: App\Entity\Stage
+            new:
+                title: 'Dodaj etap'
+            label: 'Etapy'
+            list:
+                title: '%%entity_label%%'
+                fields:
+                    - id
+                    - { property: 'designation', label: 'Opis' }
+            form:
+                fields:
+                    - { property: 'designation', type: "text", label: 'Nazwa' }
+                    - { property: 'type', type: 'choice', type_options: { choices: { 'technik': 'technik', 'matura': 'matura', 'quiz': 'quiz' } }, label: 'Typ' }
+                    - { property: 'imageFile', label: 'Ścieżka do zdjęcia', type: 'vich_image' }
+                    - { property: 'qualifications' }
+
+
+        Question:
+            class: App\Entity\Question
+            new:
+                title: 'Dodaj pytanie'
+            label: 'Pytania zamknięte'
+            list:
+                title: '%%entity_label%%'
+                fields:
+                    - id
+                    - { property: 'query', label: 'Pytanie' }
+                    - { property: 'answerA', label: 'Odpowiedź A' }
+                    - { property: 'answerB', label: 'Odpowiedź B' }
+                    - { property: 'answerC', label: 'Odpowiedź C' }
+                    - { property: 'answerD', label: 'Odpowiedź D' }
+                    - { property: 'correct', label: 'Poprawna' }
+                    - { property: 'qualification', label: 'Kwalifikacja' }
+            form:
+                fields:
+                    - { property: 'query', label: 'Pytanie', type: 'ckeditor' }
+                    - { property: 'answerA', label: 'Odpowiedź A', type: 'ckeditor' }
+                    - { property: 'answerB', label: 'Odpowiedź B', type: 'ckeditor' }
+                    - { property: 'answerC', label: 'Odpowiedź C', type: 'ckeditor' }
+                    - { property: 'answerD', label: 'Odpowiedź D', type: 'ckeditor' }
+                    - { property: 'correct', label: 'Poprawna', type: 'choice', type_options: { choices: { 'A': '1', 'B': '2', 'C': '3', 'D': '4' } } }
+                    - { property: 'qualification', label: 'Kwalifikacja' }
+                    - { property: 'imageFile', label: 'Ścieżka do zdjęcia', type: 'vich_image' }
