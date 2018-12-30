@@ -43,6 +43,11 @@ class Qualification
         $this->stages = new ArrayCollection();
         $this->questions = new ArrayCollection();
     }
+	
+	public function __toString()
+    {
+        return $this->designation.' - '.$this->description;
+    }
 
     public function getId(): ?int
     {

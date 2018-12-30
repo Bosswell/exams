@@ -17,6 +17,7 @@ easy_admin:
                 fields:
                     - { property: 'designation', type: 'text', label: 'Kod'}
                     - { property: 'description', type: 'textarea', label: 'Opis' }
+                    - { property: 'stages' }
 
         Stage:
             class: App\Entity\Stage
@@ -31,7 +32,6 @@ easy_admin:
             form:
                 fields:
                     - { property: 'designation', type: "text", label: 'Nazwa' }
-                    - { property: 'type', type: 'choice', type_options: { choices: { 'technik': 'technik', 'matura': 'matura', 'quiz': 'quiz' } }, label: 'Typ' }
                     - { property: 'imageFile', label: 'Ścieżka do zdjęcia', type: 'vich_image' }
                     - { property: 'qualifications' }
 
