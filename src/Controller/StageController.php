@@ -5,21 +5,21 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Stage;
 
 class StageController extends AbstractController
 {
     /**
      * @Route("/egzaminy/{id}", name="stage", requirements={"id": "\d+"})
      */
-    public function index(Request $request, $id = null)
+    public function index(Request $request, Stage $stage)
     {
-        $em = $this->getDoctrine()->getManager();
-        $qualifications = $em->getRepository('App:Qualification')->findByStageId($id);
-
-        $request->getSession()->set('current_stage', $id);
+        $qualifications = $stage->getQualifications();
+        $request->getSession()->set('current_stage_id', $stage->getId());
         
         return $this->render('stage/index.html.twig', [
-            'qualifications' =>  isset($qualifications) ? $qualifications : null
+            'qualifications' =>  $qualifications,
+            'stage' =>  $stage
         ]);
     }
 }
