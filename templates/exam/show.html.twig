@@ -12,9 +12,9 @@
 {% block body %}
 
     <section style="padding-top:150px;">
-      <h1 class="qualification-title-header">
-        <label class="qualification-title left-white-space">Kwalifikacja {{ qualification.designation }} - {{ qualification.description }}</label>
-      </h1>
+      <div class="qualification-title-container">
+        <h1 class="qualification-title left-white-space">Kwalifikacja {{ qualification.designation }} - {{ qualification.description }}</h1>
+      </div>
     </section>
 
     <main>
@@ -35,7 +35,7 @@
                     </div>
                 {% endif %}
                 <p id="quick-view"></p>  
-                <div style="clear:both"></div>  
+                <div class="floating-cleaner"></div>  
             </div>
 
             {% for question in questions %}
@@ -82,7 +82,7 @@
                     </div>
                 </div>
             {% endfor %}
-            <div style="clear:both"></div>     
+            <div class="floating-cleaner"></div>      
           </div>
         </section>
 
@@ -101,7 +101,6 @@
 
     {{ parent() }}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="{{ asset('js/exam.js') }}"></script>
     
 {% endblock %}

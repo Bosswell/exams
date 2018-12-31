@@ -83,3 +83,7 @@ a:hover {
 .question-group:first-child {
     display: none;
 }
+
+.focus {
+    filter: brightness(0.4);
+}

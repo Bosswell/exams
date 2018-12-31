@@ -16,6 +16,9 @@ $(function() {
         let question_number = parseInt(square.attr('data-question-number'));
 
         if (latest_question_number != question_number) {
+            squares.eq(latest_question_number).removeClass('focus');
+            square.addClass('focus',300);
+            
             questions.eq(latest_question_number).hide();
             questions.eq(question_number).show();
 

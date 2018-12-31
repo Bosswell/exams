@@ -12,15 +12,14 @@
 
 {% block body %}
 
-    <section class="title-section">
-      <h1 class="qualification-title-header">
-        <label class="qualification-title left-white-space">twój wynik testu</label>
-      </h1>
+    <section style="padding-top:150px;">
+      <div class="qualification-title-container">
+        <h1 class="qualification-title left-white-space">twój wynik testu</h1>
+      </div>
     </section>
 
     <main>
-        <section>
-          <div class="left-white-space">
+        <div class="left-white-space">
             <div id="questions-panel">
                 {% for question in questions %}
                     {% if loop.index0 % 2 == 0 %}
@@ -35,13 +34,11 @@
                     </div>
                 {% endif %}
                 <p id="quick-view"></p>  
-                <div style="clear:both"></div>  
+                <div class="floating-cleaner"></div>  
             </div>     
-          </div>
-        </section>
+        </div>
 
-        <section>
-          <div class="left-white-space summary-big-container">
+        <div class="left-white-space summary-big-container">
             {% for question in questions %}
                 <div class="question-group row">
                     <div class="col-lg-12">
@@ -98,34 +95,28 @@
                     </div>
                 </div>
             {% endfor %}
-            <div style="clear:both"></div>
-          </div>
-        </section>
-			<section>
-				<div class="left-white-space summary-container">
-					<div class="row">
-						<div class="col-lg-12">
-							<p class="text-faded text-before-devider">sprawdź udzielone prze Ciebie odpowiedzi klikając w odpowiednie kratki</p>
-							<div class="devider summary-devider"></div>
-							<div class="summary-info">
-								<h2 class="summary-header">Ilość poprawnych odpowiedzi: {{ points }}</h2>
-								<h2 class="summary-header">Ilość złych odpowiedzi: {{ question_quantity - points }} </h2>
-								<div class="exam-percent-container">
-									<h2 class="summary-header">Wynik:</h2>
-									<p class="percent-label">{{ percent }} %</p>
-								</div>
-							</div>
+            <div class="floating-cleaner"></div> 
+        </div>
+		<div class="left-white-space summary-container">
+			<div class="row">
+				<div class="col-lg-12">
+					<p class="text-faded text-before-devider">sprawdź udzielone prze Ciebie odpowiedzi klikając w odpowiednie kratki</p>
+					<div class="devider summary-devider"></div>
+					<div class="summary-info">
+						<h2 class="summary-header">Ilość poprawnych odpowiedzi: {{ points }}</h2>
+						<h2 class="summary-header">Ilość złych odpowiedzi: {{ question_quantity - points }} </h2>
+						<div class="exam-percent-container">
+							<h2 class="summary-header">Wynik:</h2>
+							<p class="percent-label">{{ percent }} %</p>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</div>
 
-			<div class="bottom-btn-container">
-                <a href="{{ path('stage', {'id': current_stage}) }}" class="btn-nav center-btn">Wylosuj kolejny test</a>
-					{% if app.user %}
-						<input type="submit" class="btn-nav right-btn" value="Dodaj do satystyk">
-					{% endif %}
-            </div>
+		<div class="bottom-btn-container">
+            <a href="{{ path('stage', {'id': current_stage_id}) }}" class="btn-nav center-btn">Wylosuj kolejny test</a>
+        </div>
     </main>
     
 {% endblock %}

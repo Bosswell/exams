@@ -78,14 +78,6 @@ section {
    padding: 0;
 }
 
-label {
-   margin: 0;
-}
-
-/* .title-mobile {
-   font-size: 25px;
-} */
-
 .qualification-title {
    padding-bottom: 10px;
 }
@@ -105,14 +97,17 @@ label {
     padding: 20px 0;
 }
 
-.qualification-title-header {
+.qualification-title-container {
     margin-right: 15px;
     border-bottom: 2px solid #000; 
     max-width: 1000px;
+    padding-bottom: 5px
+}
+
+.qualification-title {
     color: rgb(86, 191, 209);
     text-transform: none;
     font-weight: 300;
-    padding-bottom: 5px
 }
 
 .black-btn-container {

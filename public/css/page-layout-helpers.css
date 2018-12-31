@@ -23,10 +23,6 @@
     }
 }
 
-/* .left-white-space-mobile {
-    margin-left: 15px;
-} */
-
 .bottom-btn-container {
     position: relative;
     height: 90px;
@@ -86,4 +82,8 @@
         height: auto;
         margin-bottom: 15px;
     }
+}
+
+.floating-cleaner {
+    clear: both;
 }

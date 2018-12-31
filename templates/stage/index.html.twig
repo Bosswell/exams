@@ -11,14 +11,14 @@
 {% block body %}
 
   <section style="padding-top:200px;">
-    <h1 class="qualification-title">
-      <label class="left-white-space">Technik informatyk</label>
-    </h1>
+    <div class="qualification-title-container">
+      <h1 class="left-white-space qualification-title">{{ stage.designation }}</h1>
+    </div>
   </section>
 
   <main>
     <form id="qualification-form" method="POST" action="{{ path('generate_exam') }}">
-      <section class="qualification-choose-stage-container">
+      <div class="qualification-choose-stage-container">
         <div class="left-white-space">
           <p class="text-faded under-title">wybierz swoją kwalifikacje</p>
           <div id="qualifications">
@@ -29,12 +29,12 @@
                 <label class="checkbox-label">Kwalifikacja {{ qualification.designation }}</label>
               </div>
             {% endfor %}
-            <div style="clear:both"></div>
+            <div class="floating-cleaner"></div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section class="form-question-quantity">
+      <div class="form-question-quantity">
         <div class="left-white-space">
           <div class="devider"></div>
           <p class="text-faded under-title">oraz ilość pytań</p>
@@ -56,10 +56,10 @@
               <div class="checkbox"></div>
               <label class="checkbox-label">40 pytań</label>
             </div>
-            <div style="clear:both"></div>
+            <div class="floating-cleaner"></div>
           </div>
         </div>
-      </section>
+      </div>
 
       <div id="errors-container" class="left-white-space"></div>
 

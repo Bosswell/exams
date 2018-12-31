@@ -23,14 +23,6 @@ a.btn-main:hover {
   background-color: #F05F40 !important;
 }
 
-.bg-dark {
-  background-color: #212529 !important;
-}
-
-.section-heading {
-  margin-top: 0;
-}
-
 #mainNav {
   border-bottom: 1px solid rgba(33, 37, 41, 0.1);
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -121,6 +113,7 @@ header.masthead p {
   color: white;
   font-variant: small-caps;
   padding: 15px;
+  cursor: pointer;
 }
 
 @media (max-width: 992px) {
@@ -154,8 +147,4 @@ header.masthead p {
   .btn-main {
     padding: 25px;
   }
-}
-
-.btn-nav {
-  cursor: pointer;
 }
