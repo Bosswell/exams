@@ -3,10 +3,10 @@ vich_uploader:
     mappings:
         exam_question_directory:
             uri_prefix:         '%exam_question_directory%'
-            upload_destination: '%kernel.project_dir%/web/uploads/exams'
+            upload_destination: '%kernel.project_dir%/public/uploads/exams'
             namer: vich_uploader.namer_origname
 
         stage_directory:
             uri_prefix:         '%stage_directory%'
-            upload_destination: '%kernel.project_dir%/web/uploads/stage'
+            upload_destination: '%kernel.project_dir%/public/uploads/stage'
             namer: vich_uploader.namer_origname

@@ -1,5 +1,7 @@
 easy_admin:
     site_name: 'Panel administracyjny'
+    design:
+        form_theme: ['@EasyAdmin/form/bootstrap_4.html.twig', 'vich/fields.html.twig']
     entities:
         Qualification:
             class: App\Entity\Qualification
