@@ -84,6 +84,11 @@ class Question
      */
     private $imageFile;
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime('now');
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -203,7 +208,7 @@ class Question
         return $this->imageName;
     }
 
-    public function setImageName(string $imageName): self
+    public function setImageName(?string $imageName): self
     {
         $this->imageName = $imageName;
 
