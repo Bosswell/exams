@@ -56,11 +56,11 @@ easy_admin:
                     - { property: 'qualification', label: 'Kwalifikacja' }
             form:
                 fields:
-                    - { property: 'query', label: 'Pytanie', type: 'ckeditor' }
-                    - { property: 'answerA', label: 'Odpowiedź A', type: 'ckeditor' }
-                    - { property: 'answerB', label: 'Odpowiedź B', type: 'ckeditor' }
-                    - { property: 'answerC', label: 'Odpowiedź C', type: 'ckeditor' }
-                    - { property: 'answerD', label: 'Odpowiedź D', type: 'ckeditor' }
+                    - { property: 'query', label: 'Pytanie', type: 'fos_ckeditor' }
+                    - { property: 'answerA', label: 'Odpowiedź A', type: 'fos_ckeditor' }
+                    - { property: 'answerB', label: 'Odpowiedź B', type: 'fos_ckeditor' }
+                    - { property: 'answerC', label: 'Odpowiedź C', type: 'fos_ckeditor' }
+                    - { property: 'answerD', label: 'Odpowiedź D', type: 'fos_ckeditor' }
                     - { property: 'correct', label: 'Poprawna', type: 'choice', type_options: { choices: { 'A': '1', 'B': '2', 'C': '3', 'D': '4' } } }
                     - { property: 'qualification', label: 'Kwalifikacja' }
-                    - { property: 'imageFile', label: 'Ścieżka do zdjęcia', type: 'vich_image' }
+                    - { property: 'imageFile', label: 'Zdjęcie', type: 'vich_image' }
