@@ -2,6 +2,13 @@ easy_admin:
     site_name: 'Panel administracyjny'
     design:
         form_theme: ['@EasyAdmin/form/bootstrap_4.html.twig', '@VichUploader/Form/fields.html.twig']
+        menu:
+            - { label: 'Encje' }
+            - Qualification
+            - Stage
+            - Question
+            - { label: 'Zaawansowane' }
+            - { label: 'Wyczyść cache', route: 'clear_cache' }
     entities:
         Qualification:
             class: App\Entity\Qualification
@@ -28,7 +35,7 @@ easy_admin:
                 fields:
                     - { property: 'designation', type: "text", label: 'Nazwa' }
                     - { property: 'qualifications' }
-                    - { property: 'imageFile', label: 'Ścieżka do zdjęcia', type: 'vich_image'}
+                    - { property: 'imageFile', label: 'Zdjęcie', type: 'vich_image'}
             label: 'Etapy'
             list:
                 title: 'Etapy'
@@ -40,7 +47,7 @@ easy_admin:
                 fields:
                     - { property: 'designation', type: "text", label: 'Nazwa' }
                     - { property: 'qualifications' }
-                    - { property: 'imageFile', label: 'Ścieżka do zdjęcia', type: 'vich_image', type_options: { allow_delete: false }}
+                    - { property: 'imageFile', label: 'Zdjęcie', type: 'vich_image', type_options: { allow_delete: false }}
 
 
         Question:
