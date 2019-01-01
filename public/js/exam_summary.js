@@ -1,6 +1,7 @@
 $(function() {
     let checkbox = $('.checkbox-group');
     let squares = $('#questions-panel .square');
+    let questions_container = $('#question-group-container');
 
     let questions = $('.question-group');
     let questions_quantity = questions.length;
@@ -24,6 +25,8 @@ $(function() {
 
             latest_question_number = question_number;
         }
+
+        scrollToQuestionsBlock();
     });
 
     // Works great
@@ -44,4 +47,9 @@ $(function() {
     squares.on('mouseleave', function() { 
         $('#quick-view').text('');
     });
+
+    function scrollToQuestionsBlock() {
+        let position = questions_container.offset().top - 85;
+        $(window).scrollTop(position);
+    }
 })

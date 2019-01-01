@@ -29,7 +29,8 @@
     margin-top: 25px;
 }
 
-.center-btn {
+.center-btn,
+.middle-button {
     position: absolute;
     right: 0;
     left: 0;

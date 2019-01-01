@@ -6,10 +6,13 @@ $(function() {
     let questions_quantity = questions.length;
     let form = $('#exam-form');
     let errors_container = $('#errors-container');
-    let body = $('body');
+    let questions_container = $('#question-group-container');
 
     let latest_question_number = null;
     let quick_view = $('#quick-view');
+
+    let durationAddClass = 250;
+    let durationRemoveClass = 200;
 
     let next_question_btn = $('#next-question');
 
@@ -25,7 +28,7 @@ $(function() {
 
         if (square.attr('data-is-filled') == 'false') {
             square.removeClass('square-empty');
-            square.addClass('square-active', 300);
+            square.addClass('square-active', durationAddClass);
         }
 
         questions.eq(latest_question_number).hide();
@@ -39,7 +42,7 @@ $(function() {
             next_question_btn.show();
         }
 
-        body.scrollTop(0);
+        scrollToQuestionsBlock();
     });
 
     checkbox.on('click', function() {
@@ -56,15 +59,12 @@ $(function() {
         }
 
         grouped_answers.each(function(index){
-            grouped_answers.eq(index).removeClass('answer-filled', 250);
-            grouped_answers.eq(index).removeClass('answer-active', 250);
+            grouped_answers.eq(index).removeClass('answer-filled', durationRemoveClass);
+            grouped_answers.eq(index).removeClass('answer-active', durationRemoveClass);
             grouped_answers.eq(index).attr('is-active', 'false');
         });
 
-        current_checkbox.addClass('answer-filled', {
-            duration: 300,
-            easing: "linear"
-        });
+        current_checkbox.addClass('answer-filled', durationAddClass);
 
         let square = squares.eq(question_number);
 
@@ -85,7 +85,7 @@ $(function() {
         if (latest_question_number != question_number) {
             if (square.attr('data-is-filled') == 'false') {
                 square.removeClass('square-empty');
-                square.addClass('square-active', 300);
+                square.addClass('square-active', durationAddClass);
             }
 
             questions.eq(latest_question_number).hide();
@@ -99,6 +99,8 @@ $(function() {
 
             latest_question_number = question_number;
         }
+
+        scrollToQuestionsBlock();
     });
 
     // Works great
@@ -127,12 +129,12 @@ $(function() {
             let element = squares.eq(index);
             if (element.attr('data-is-filled') != 'true') {
                 isOk = false;
-                element.addClass('square-error', 300);
+                element.addClass('square-error', durationAddClass);
             }
         });
 
         setTimeout(function() {
-            squares.removeClass('square-error', 250);
+            squares.removeClass('square-error', durationRemoveClass);
         }, 2000);
 
         if (!isOk) {
@@ -141,5 +143,10 @@ $(function() {
 
             return false;
         }
-     })
+    });
+
+    function scrollToQuestionsBlock() {
+        let position = questions_container.offset().top - 85;
+        $(window).scrollTop(position);
+    }
 })
