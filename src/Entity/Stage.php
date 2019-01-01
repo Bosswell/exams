@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,11 +24,22 @@ class Stage
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 6,
+     *      max = 255,
+     *      minMessage = "Designation must be at least {{ limit }} characters long",
+     *      maxMessage = "Designation cannot be longer than {{ limit }} characters"
+     * )
      */
     private $designation;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Image name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $imageName;
 	
@@ -35,6 +47,16 @@ class Stage
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="stage_directory", fileNameProperty="imageName")
+     * @Assert\File()
+     * @Assert\NotBlank()
+     * @Assert\Image(
+     *   mimeTypes = {
+     *     "image/png",
+     *     "image/jpeg",
+     *     "image/jpg"
+     *   },
+     *   mimeTypesMessage = "Invalid mime type. Allowed types [png, jpeg, jpg]"
+     * )
      * 
      * @var File
      */
@@ -42,6 +64,9 @@ class Stage
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     * @Assert\DateTime
+     * @var string A "Y-m-d H:i:s" formatted value
      */
     private $updatedAt;
 

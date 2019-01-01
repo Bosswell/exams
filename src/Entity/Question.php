@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -21,41 +22,58 @@ class Question
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $query;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $answerA;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $answerB;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $answerC;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $answerD;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 4,
+     *      minMessage = "You must enter [1, 2, 3, 4] values",
+     *      maxMessage = "You must enter [1, 2, 3, 4] values"
+     * )
      */
     private $correct;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Image name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $imageName;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     * @Assert\DateTime
      */
     private $createdAt;
 
@@ -67,6 +85,8 @@ class Question
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     * @Assert\DateTime
      */
     private $updatedAt;
 	
@@ -79,7 +99,15 @@ class Question
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="exam_question_directory", fileNameProperty="imageName")
-     * 
+     * @Assert\File()
+     * @Assert\Image(
+     *   mimeTypes = {
+     *     "image/png",
+     *     "image/jpeg",
+     *     "image/jpg"
+     *   },
+     *   mimeTypesMessage = "Invalid mime type. Allowed types [png, jpeg, jpg]"
+     * )
      * @var File
      */
     private $imageFile;

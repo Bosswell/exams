@@ -25,17 +25,22 @@ easy_admin:
             class: App\Entity\Stage
             new:
                 title: 'Dodaj etap'
+                fields:
+                    - { property: 'designation', type: "text", label: 'Nazwa' }
+                    - { property: 'qualifications' }
+                    - { property: 'imageFile', label: 'Ścieżka do zdjęcia', type: 'vich_image'}
             label: 'Etapy'
             list:
-                title: '%%entity_label%%'
+                title: 'Etapy'
                 fields:
                     - id
                     - { property: 'designation', label: 'Opis' }
-            form:
+            edit:
+                title: 'Edytuj etap'
                 fields:
                     - { property: 'designation', type: "text", label: 'Nazwa' }
-                    - { property: 'imageFile', label: 'Ścieżka do zdjęcia', type: 'vich_image' }
                     - { property: 'qualifications' }
+                    - { property: 'imageFile', label: 'Ścieżka do zdjęcia', type: 'vich_image', type_options: { allow_delete: false }}
 
 
         Question:
