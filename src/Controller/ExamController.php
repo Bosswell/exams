@@ -7,6 +7,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Exam\Exam;
+use App\Exam\ExamValidator;
 use App\Entity\Question;
 use App\Entity\Qualification;
 
@@ -22,6 +23,10 @@ class ExamController extends AbstractController
 
         if (empty($qualification_id) || empty($question_quantity)) {
             throw new NotFoundHttpException("Page not found");
+        }
+
+        if (!ExamValidator::isCorrectNumberOfQuestions($question_quantity)) {
+            return $this->redirectToRoute('home_page');
         }
         
         $em = $this->getDoctrine()->getManager();
