@@ -13,6 +13,7 @@
 			<link href="{{ asset('css/creative.css') }}" rel="stylesheet">
 			<link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"> 
       <link rel="stylesheet" href="{{ asset('fontello/css/fontello.css') }}">
+			<link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     {% endblock %}
 
   </head>
@@ -34,27 +35,102 @@
 
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 				  <ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-					  <a class="nav-link js-scroll-trigger" href="/#egzaminy">Egzaminy</a>
-					</li>
-					<li class="nav-item">
-					  <a class="nav-link js-scroll-trigger" href="#terminy">Terminy</a>
-					</li>
-					<li class="nav-item">
-					  <a class="nav-link js-scroll-trigger" href="#wspolpraca">Współpraca</a>
-					</li>
-					<li class="nav-item">
-					  <a class="nav-link js-scroll-trigger" href="#about">O nas</a>
-					</li>
-					<li class="nav-item">
-					  <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">Zaloguj się</a>
-					</li>
+						<li class="nav-item">
+							<a class="nav-link js-scroll-trigger" href="/#egzaminy">Egzaminy</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link js-scroll-trigger" href="#terminy">Terminy</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link js-scroll-trigger" href="#wspolpraca">Kontakt</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">Zaloguj się</a>
+						</li>
 				  </ul>
 				</div>
 			</div>
 		</nav>
 
     {% block body %}{% endblock %}
+
+		{% block footer %}
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3">
+							<img src="{{ asset('images/logo.svg') }}" alt="Egzaminy zawodowe online">
+							<strong class="footer-site-desc">
+								Strona powstała w celach 
+								edukacyjnych. Umożliwia w łatwy i szybki sposób 
+								weryfikację wiedzy z wybranego
+								zakresu za pomocą losowo generowanych
+								testów. Chcesz mieć pewność, że zdasz?
+								Sprawdź się już teraz!
+							</strong>
+						</div>
+						<div class="col-lg-3">
+							<section id="block-exams">
+								<h1 class="footer-block-title">Egzaminy</h1>
+								<nav>
+									<ul id="exam-list">
+										{% for stage in stagesGenerator.getAll %}
+											<li>
+												<a href="{{ path('stage', {'id': stage.id}) }}">{{ stage.designation }}</a>
+											</li>
+										{% endfor %}
+									</ul>
+								</nav>
+							</section>
+						</div>
+						<div class="col-lg-3">
+							<section id="footer-exam-terms-block">
+								<h1 class="footer-block-title">Terminy</h1>
+								<ul>
+									<li>
+										Sesja zimowa
+										<ul>
+											<li>
+												część pisemna <br/> 
+												- <time datetime="10.01.2019">10.01.2019</time>
+											</li>
+											<li>
+												część praktyczna <br/> 
+												- <time datetime="09.01.2019">09.01</time>-<time datetime="16.01.2019">16.01.2019</time>
+											</li>
+										</ul>
+									</li>
+									<li>
+										Sesja letnia
+										<ul>
+											<li>
+												część pisemna <br/> 
+												- <time datetime="18.06.2019">18.06.2019
+											</li>
+											<li>
+												część praktyczna <br/> 
+												- <time datetime="17.06.2019">17.06</time>-<time datetime="04.07.2019">04.07.2019</time>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</section>
+						</div>
+						<div class="col-lg-3">
+							<section id="footer-about-us">
+								<h1 class="footer-block-title">Kontakt</h1>
+								<a href="mailto:info@xxx.cz" itemprop="email">info@zawodowe-online.pl</a>
+								<p class="copyright">&copy; Copyright 2018<br/> egzaminy-zawodowe.pl</p>
+								<aside id="copyright-info">
+									Pytania i odpowiedzi dostępne na stronie pochodzą z arkuszy egzaminacyjnych 
+									udostępnionych przez <a href="https://cke.gov.pl" title="Przejdź do strony" target="_blank">www.cke.gov.pl</a>
+								</aside>
+							</section>
+						</div>
+					</div>
+				</div>
+			</footer>
+		{% endblock %}
 
     {% block javascripts %}
 			<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>

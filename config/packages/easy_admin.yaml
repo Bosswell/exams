@@ -3,12 +3,13 @@ easy_admin:
     design:
         form_theme: ['@EasyAdmin/form/bootstrap_4.html.twig', '@VichUploader/Form/fields.html.twig']
         menu:
+            - { label: 'Strona główna', route: 'home_page', icon: 'home' }
             - { label: 'Encje' }
             - Qualification
             - Stage
             - Question
             - { label: 'Zaawansowane' }
-            - { label: 'Wyczyść cache', route: 'clear_cache' }
+            - { label: 'Wyczyść cache', route: 'clear_cache', icon: 'trash' }
     entities:
         Qualification:
             class: App\Entity\Qualification
