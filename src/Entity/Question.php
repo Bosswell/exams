@@ -85,7 +85,6 @@ class Question
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
      * @Assert\DateTime
      */
     private $updatedAt;
@@ -114,7 +113,9 @@ class Question
 
     public function __construct()
     {
-        $this->createdAt = new \DateTime('now');
+        $now = new \DateTime('now');
+        $this->createdAt = $now;
+        $this->updatedAt = $now;
     }
 
     public function getId(): ?int
