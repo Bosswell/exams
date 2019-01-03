@@ -145,8 +145,13 @@ $(function() {
         }
     });
 
+    // Only for mobile/tablets
     function scrollToQuestionsBlock() {
         let position = questions_container.offset().top - 85;
-        $(window).scrollTop(position);
+        let windowObj = $(window);
+
+        if (windowObj.width() < 1024) {
+            windowObj.scrollTop(position);
+        }
     }
 })

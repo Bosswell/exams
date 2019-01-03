@@ -17,6 +17,7 @@
     font-weight: 400;
     font-size: 14px;
     margin-top: 10px;
+    padding-bottom: 20px;
 }
 
 #footer #block-exams #exam-list {
@@ -26,7 +27,26 @@
 }
 
 #footer #block-exams #exam-list li {
-    padding-top: 6px;
+    padding: 3px;
+}
+
+@media (max-width: 1140px) {
+    #footer #block-exams #exam-list li:last-child {
+        border: none;
+    }
+
+    #footer #first-footer-block {
+        text-align: center;
+    }
+
+    #footer #footer-about-us,
+    #footer .footer-block-title {
+        text-align: center;
+    }
+
+    #footer .footer-block-title {
+        padding-bottom: 15px;
+    }
 }
 
 #footer #block-exams #exam-list li a {

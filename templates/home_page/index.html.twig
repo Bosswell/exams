@@ -7,60 +7,60 @@
 {% endblock %}
 
 {% block body %}
-
-  <div class="scroll-to">
-		<header class="masthead text-center text-white d-flex" style="z-index:99999">
-			<div class="container my-auto" style="color:black">
-			  <div class="row">
-				<div class="col-lg-10 mx-auto" style="text-align: justify">
-					  <h1 class="text-uppercase">
-							<strong>
-							  <b>Z nami zdasz<br/>każdy egzamin</b>
-							</strong>
-						  </h1>
-						  <p class="text-faded mb-5">Wybierz specjalizacje poniżej i sprawdź swoja wiedzę</p>
-				</div>
-				<div class="col-lg-8 mx-auto" style="margin-top:15px">
-				  <a class="btn-nav js-scroll-trigger btn-main" href="#egzaminy">Znajdź twój egzamin</a>
-				</div>
+{# Do poprawy #}
+  <header class="masthead text-center text-white d-flex" style="z-index:99999">
+		<div class="container my-auto" style="color:black">
+			<div class="row">
+			  <div class="col-lg-10 mx-auto" style="text-align: justify">
+					<h1 class="text-uppercase">
+						<strong>
+							<b>Z nami zdasz<br/>każdy egzamin</b>
+						</strong>
+						</h1>
+						<p class="text-faded mb-5">Wybierz specjalizacje poniżej i sprawdź swoja wiedzę</p>
 			  </div>
-			</div>
-		</header>
-	</div>
-
-		
-	<div id="egzaminy">
-    <div class="container">
-      <div class="row" style="margin-bottom:60px">
-        <div class="col-lg-12">
-          <h1 class="title">wybierz Twój kierunek</h1>
-          <p class="description">
-            ...spośród 8 dostępnych. Nasza baza pytań oraz zawodów jest wciąż poszerzana, <br/>
-            więc jeśli nie ma wojego kierunku, pojawi się on w przyszłości!
-          </p>
+        <div class="col-lg-8 mx-auto" style="margin-top:15px">
+          <a class="btn-nav js-scroll-trigger btn-main" href="#egzaminy">Znajdź twój egzamin</a>
         </div>
-      </div>
-        
-      <div id="jobs">
-        {% for stage in stages %}
-          <div class="job-container">
-            <div class="job-img-container">
-              <img class="job-img" src="{{ asset('uploads/stage/'~stage.image_name) }}">
-            </div>
-            <div class="job-info" {% if loop.last %} style="border:none" {% endif %}>
-              <h3 class="info-title">
-                <a href="{{ path('stage', {'id': stage.id}) }}">{{ stage.designation }}</a>
-              </h3>
-              <div class="info-text">{{ stage.stages_quantity }} kwalifikacje</div>
-              <div class="info-text">{{ stage.qualification_quantity }} pytań w bazie</div>
-            </div>
-            <div style="clear:both"></div>
-          </div>
-        {% endfor %}   
-      </div>
+			</div>
+		</div>
+	</header>
 
+  <article class="container" id="egzaminy">
+    <section>
+      <h1 class="title">wybierz Twój kierunek</h1>
+        <p class="description">
+          ...spośród 8 dostępnych. Nasza baza pytań oraz zawodów jest wciąż poszerzana, <br/>
+          więc jeśli nie ma wojego kierunku, pojawi się on w przyszłości!
+        </p>
+    </section>
+    <div id="jobs">
+      {% for stage in stages %}
+        <div class="job-container">
+          <div class="job-img-container">
+            <img class="job-img" src="{{ asset('uploads/stage/'~stage.image_name) }}">
+          </div>
+          <div class="job-info" {% if loop.last %} style="border:none" {% endif %}>
+            <h3 class="info-title">
+              <a href="{{ path('stage', {'id': stage.id}) }}">{{ stage.designation }}</a>
+            </h3>
+            <div class="info-text">{{ stage.stages_quantity }} kwalifikacje</div>
+            <div class="info-text">{{ stage.qualification_quantity }} pytań w bazie</div>
+          </div>
+          <div style="clear:both"></div>
+        </div>
+      {% endfor %}   
     </div>
-  </div>
+  </article>
+
+  <article class="container" id="terminy">
+    <section>
+      <h1 class="title">Terminy</h1>
+        <p class="description">
+          lista najważniejszych dat związanych z sesją egzaminacyjną 2019
+        </p>
+    </section>
+  </article>
 	
 {% endblock %}
 
