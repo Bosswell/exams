@@ -111,6 +111,24 @@ class Question
      */
     private $imageFile;
 
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     * @Assert\Length(
+     *      max = 10,
+     *      maxMessage = "Session name cannot be longer than {{ limit }} characters"
+     * )
+     */
+    private $session;
+
+    /**
+     * @ORM\Column(type="string", length=4, nullable=true)
+     * @Assert\Length(
+     *      max = 4,
+     *      maxMessage = "Year cannot be longer than {{ limit }} characters"
+     * )
+     */
+    private $year;
+
     public function __construct()
     {
         $now = new \DateTime('now');
@@ -149,11 +167,11 @@ class Question
     }
 	
 	public function setUserAnswer(int $user_answer) : self
-    {
-        $this->user_answer = $user_answer;
-
-        return $this;
-    }
+                               {
+                                   $this->user_answer = $user_answer;
+                           
+                                   return $this;
+                               }
 
     public function getUserAnswer() : int
     {
@@ -276,6 +294,30 @@ class Question
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getSession(): ?string
+    {
+        return $this->session;
+    }
+
+    public function setSession(?string $session): self
+    {
+        $this->session = $session;
+
+        return $this;
+    }
+
+    public function getYear(): ?string
+    {
+        return $this->year;
+    }
+
+    public function setYear(?string $year): self
+    {
+        $this->year = $year;
 
         return $this;
     }

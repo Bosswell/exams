@@ -76,4 +76,6 @@ easy_admin:
                     - { property: 'answerD', label: 'Odpowiedź D', type: 'fos_ckeditor' }
                     - { property: 'correct', label: 'Poprawna', type: 'choice', type_options: { choices: { 'A': '1', 'B': '2', 'C': '3', 'D': '4' } } }
                     - { property: 'qualification', label: 'Kwalifikacja' }
+                    - { property: 'session', label: 'Sesja', type: 'choice', type_options: { choices: { 'Letnia': 'letnia', 'Zimowa': 'zimowa'} } }
+                    - { property: 'year', label: 'Rok', type: 'choice', type_options: { choices: { '2013': '2013', '2014': '2014', '2015': '2015', '2016': '2016', '2017': '2017', '2018': '2018', '2019': '2019' } } }
                     - { property: 'imageFile', label: 'Zdjęcie', type: 'vich_image' }
