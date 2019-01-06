@@ -75,9 +75,42 @@
 .description {
     color: grey;
     font-weight: 400;
+    font-size: 17px;
 }
   
 .info-title {
     font-size: 20px;
 }
-  
+
+a:hover {
+    text-decoration: none;
+}
+
+#terminy footer {
+    font-size: 17px;
+    border-top: 1px solid #979797;
+    color: grey;
+    font-weight: 400;
+}
+
+#terms-container {
+    width: 800px;
+    margin: 0 auto;
+    background: red;
+    height: 300px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 50px;
+}
+
+.allign-left {
+    text-align: left;
+}
+
+.allign-right {
+    text-align: right;
+}
+
+.allign-center {
+    text-align: center;
+}
