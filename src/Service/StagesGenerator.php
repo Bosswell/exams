@@ -30,7 +30,7 @@ class StagesGenerator
         if (!$this->cache->has('stages.all')) {
 
             $sql = '
-                SELECT s.id, s.designation, s.image_name, count(q.qualification_id) as "qualification_quantity",
+                SELECT s.meta_description, s.friendly_url, s.id, s.designation, s.image_name, count(q.qualification_id) as "qualification_quantity",
                 count(DISTINCT(q.qualification_id)) as "stages_quantity" FROM `stage` s LEFT JOIN `stage_qualification` 
                 s_q ON s_q.stage_id = s.id LEFT JOIN `question` q ON q.qualification_id = s_q.qualification_id GROUP BY s_q.stage_id
             ';

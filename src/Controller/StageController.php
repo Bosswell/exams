@@ -10,7 +10,7 @@ use App\Entity\Stage;
 class StageController extends AbstractController
 {
     /**
-     * @Route("/egzaminy/{id}", name="stage", requirements={"id": "\d+"})
+     * @Route("/egzaminy/{id}-{friendly_url}", name="stage", requirements={"id": "\d+"})
      */
     public function index(Request $request, Stage $stage)
     {

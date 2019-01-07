@@ -42,7 +42,7 @@
           </div>
           <div class="job-info" {% if loop.last %} style="border:none" {% endif %}>
             <h3 class="info-title">
-              <a href="{{ path('stage', {'id': stage.id}) }}">{{ stage.designation }}</a>
+              <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">{{ stage.designation }}</a>
             </h3>
             <div class="info-text">{{ stage.stages_quantity }} kwalifikacje</div>
             <div class="info-text">{{ stage.qualification_quantity }} pytań w bazie</div>

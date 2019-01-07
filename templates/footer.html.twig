@@ -20,7 +20,7 @@
                             <ul id="exam-list">
                                 {% for stage in stagesGenerator.getAll %}
                                     <li>
-                                        <a href="{{ path('stage', {'id': stage.id}) }}">{{ stage.designation }}</a>
+                                        <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.designation|lower|replace({' ': '-', 'ź': 'z', 'ó': 'o', 'ł': 'l', 'ą': 'a', 'ż': 'z', 'ę': 'e', 'ć': 'c', 'ń': 'n', 'ś': 's'})|url_encode}) }}">{{ stage.designation }}</a>
                                     </li>
                                 {% endfor %}
                             </ul>

@@ -35,6 +35,8 @@ easy_admin:
                 title: 'Dodaj etap'
                 fields:
                     - { property: 'designation', type: "text", label: 'Nazwa' }
+                    - { property: 'friendlyUrl', type: "text", label: 'Przyjazny link' }
+                    - { property: 'metaDescription', type: "textarea", label: 'Opis meta' }
                     - { property: 'qualifications' }
                     - { property: 'imageFile', label: 'Zdjęcie', type: 'vich_image'}
             label: 'Etapy'
@@ -47,6 +49,8 @@ easy_admin:
                 title: 'Edytuj etap'
                 fields:
                     - { property: 'designation', type: "text", label: 'Nazwa' }
+                    - { property: 'friendlyUrl', type: "text", label: 'Przyjazny link' }
+                    - { property: 'metaDescription', type: "textarea", label: 'Opis meta' }
                     - { property: 'qualifications' }
                     - { property: 'imageFile', label: 'Zdjęcie', type: 'vich_image', type_options: { allow_delete: false }}
 
