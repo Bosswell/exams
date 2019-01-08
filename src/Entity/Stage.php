@@ -94,7 +94,7 @@ class Stage
      *      max = 100,
      *      min = 20,
      *      maxMessage = "Meta description cannot be longer than {{ limit }} characters",
-     *      minMessage = "Friendly url must be at least {{ limit }} characters long"
+     *      minMessage = "Meta description must be at least {{ limit }} characters long"
      * )
      */
     private $metaDescription;

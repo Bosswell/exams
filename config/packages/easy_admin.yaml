@@ -27,6 +27,8 @@ easy_admin:
                 fields:
                     - { property: 'designation', type: 'text', label: 'Kod'}
                     - { property: 'description', type: 'textarea', label: 'Opis' }
+                    - { property: 'friendlyUrl', type: "text", label: 'Przyjazny link' }
+                    - { property: 'metaDescription', type: "textarea", label: 'Opis meta' }
                     - { property: 'stages' }
 
         Stage:

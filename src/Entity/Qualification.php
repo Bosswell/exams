@@ -49,6 +49,30 @@ class Qualification
      */
     private $questions;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      max = 255,
+     *      min = 20,
+     *      maxMessage = "Meta description cannot be longer than {{ limit }} characters",
+     *      minMessage = "Meta description must be at least {{ limit }} characters long"
+     * )
+     */
+    private $metaDescription;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      max = 100,
+     *      min = 5,
+     *      maxMessage = "Friendly url cannot be longer than {{ limit }} characters",
+     *      minMessage = "Friendly url must be at least {{ limit }} characters long"
+     * )
+     */
+    private $friendlyUrl;
+
     public function __construct()
     {
         $this->stages = new ArrayCollection();
@@ -56,9 +80,9 @@ class Qualification
     }
 	
 	public function __toString()
-    {
-        return $this->designation.' - '.$this->description;
-    }
+                      {
+                          return $this->designation.' - '.$this->description;
+                      }
 
     public function getId(): ?int
     {
@@ -144,6 +168,30 @@ class Qualification
                 $question->setQualification(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMetaDescription(): ?string
+    {
+        return $this->metaDescription;
+    }
+
+    public function setMetaDescription(string $metaDescription): self
+    {
+        $this->metaDescription = $metaDescription;
+
+        return $this;
+    }
+
+    public function getFriendlyUrl(): ?string
+    {
+        return $this->friendlyUrl;
+    }
+
+    public function setFriendlyUrl(string $friendlyUrl): self
+    {
+        $this->friendlyUrl = $friendlyUrl;
 
         return $this;
     }
