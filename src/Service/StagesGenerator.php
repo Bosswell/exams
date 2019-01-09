@@ -25,7 +25,7 @@ class StagesGenerator
     /*
     * Pull out all with the number of all questions
     */
-    public function getAll()
+    public function getAll() : Array
     {
         if (!$this->cache->has('stages.all')) {
 
