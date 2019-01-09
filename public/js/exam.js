@@ -48,8 +48,7 @@ $(function() {
     checkbox.on('click', function() {
         let current_checkbox = $(this);
         let answer_group = $(this).parent().parent();
-        let answer_input = answer_group.find('.user_answer');
-        let value = current_checkbox.attr('data-value');
+        let checkbox_input = answer_group.find('.user_answer');
 
         let grouped_answers =answer_group.find('.checkbox-group');
         let question_number = answer_group.attr('data-question-number');
@@ -73,11 +72,18 @@ $(function() {
         square.addClass('answer-filled');
         square.attr('data-is-filled', 'true');
 
-        answer_input.val(value);
         current_checkbox.attr('is-active', 'true');
+
+        let value = current_checkbox.attr('data-value');
+
+        checkbox_input.filter(function() {
+            return this.value == value;
+        }).prop("selected", true);
     });
 
-    // Works awesome !
+    /**
+     * TODO desc
+     */
     squares.on('click', function() {
         let square = $(this);
         let question_number = parseInt(square.attr('data-question-number'));

@@ -1,90 +1,87 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} 
 
-{% block stylesheets %}
-    {{ parent() }}
-
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-{% endblock %}
+{% block stylesheets %} 
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('css/main.css') }}"> 
+{% endblock %} 
 
 {% block body %}
-{# Do poprawy #}
-  <header class="masthead text-center text-white d-flex" style="z-index:99999">
-		<div class="container my-auto" style="color:black">
-			<div class="row">
-			  <div class="col-lg-10 mx-auto" style="text-align: justify">
-					<h1 class="text-uppercase">
-						<strong>
-							<b>Z nami zdasz<br/>każdy egzamin</b>
-						</strong>
-						</h1>
-						<p class="text-faded mb-5">Wybierz specjalizacje poniżej i sprawdź swoja wiedzę</p>
-			  </div>
-        <div class="col-lg-8 mx-auto" style="margin-top:15px">
-          <a class="btn-nav js-scroll-trigger btn-main" href="#egzaminy">Znajdź twój egzamin</a>
-        </div>
-			</div>
-		</div>
-	</header>
+  <header class="masthead text-center text-white d-flex">
+      <div class="container my-auto" style="color:black">
+          <div class="row">
+              <div class="col-lg-10 mx-auto" style="text-align: justify">
+                  <h1 class="text-uppercase">
+              <strong>
+                <b>Z nami zdasz<br/>każdy egzamin</b>
+              </strong>
+              </h1>
+                  <p class="text-faded mb-5">Wybierz specjalizacje poniżej i sprawdź swoja wiedzę</p>
+              </div>
+              <div class="col-lg-8 mx-auto" style="margin-top:15px">
+                  <a class="btn-nav js-scroll-trigger btn-main" href="#egzaminy">Znajdź twój egzamin</a>
+              </div>
+          </div>
+      </div>
+  </header>
 
   <article class="container" id="egzaminy">
-    <section>
-      <h1 class="title">wybierz Twój kierunek</h1>
-        <p class="description">
-          ...spośród 8 dostępnych. Nasza baza pytań oraz zawodów jest wciąż poszerzana, <br/>
-          więc jeśli nie ma wojego kierunku, pojawi się on w przyszłości!
-        </p>
-    </section>
-    <div id="jobs">
-      {% for stage in stages %}
-        <div class="job-container">
-          <div class="job-img-container">
-            <img class="job-img" src="{{ asset('uploads/stage/'~stage.image_name) }}">
+      <section>
+          <h1 class="title">wybierz Twój kierunek</h1>
+          <p class="description">
+              ...spośród 8 dostępnych. Nasza baza pytań oraz zawodów jest wciąż poszerzana,
+              <br/> więc jeśli nie ma wojego kierunku, pojawi się on w przyszłości!
+          </p>
+      </section>
+      <div id="jobs">
+          {% for stage in stages %}
+          <div class="job-container">
+              <div class="job-img-container">
+                  <img class="job-img" src="{{ asset('uploads/stage/'~stage.image_name) }}" alt="Wybierz kategorie">
+              </div>
+              <div class="job-info" {% if loop.last %} style="border:none" {% endif %}>
+                  <h3 class="info-title">
+                <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">{{ stage.designation }}</a>
+              </h3>
+                  <div class="info-text">{{ stage.stages_quantity }} kwalifikacje</div>
+                  <div class="info-text">{{ stage.qualification_quantity }} pytań w bazie</div>
+              </div>
+              <div style="clear:both"></div>
           </div>
-          <div class="job-info" {% if loop.last %} style="border:none" {% endif %}>
-            <h3 class="info-title">
-              <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">{{ stage.designation }}</a>
-            </h3>
-            <div class="info-text">{{ stage.stages_quantity }} kwalifikacje</div>
-            <div class="info-text">{{ stage.qualification_quantity }} pytań w bazie</div>
-          </div>
-          <div style="clear:both"></div>
-        </div>
-      {% endfor %}   
-    </div>
+          {% endfor %}
+      </div>
   </article>
 
   <article class="container" id="terminy">
-    <section>
-      <h1 class="title">Terminy</h1>
-        <p class="description">
-          lista najważniejszych dat związanych z sesją egzaminacyjną 2019
-        </p>
-        <article id="terms-container">
-          <div>
-            Sesja letnia
-            <time datetime="10.01.2019">10.01.2019</time>
-            <time datetime="09.01.2019">09.01</time>-<time datetime="16.01.2019">16.01.2019</time>
-            <time datetime="22.03.2019">22.03.2019</time>
-          </div>
-          <div>
-            część pisemna
-            część praktyczna
-            ogłoszenie wyników
-          </div>
-          <div>
-            Sesja zimowa
-            <time datetime="18.06.2019">18.06.2019
-            <time datetime="17.06.2019">17.06</time>-<time datetime="04.07.2019">04.07.2019</time>
-            <time datetime="30.08.2019">30.08.2019</time>
-          </div>
-        </article>
-    </section>
-    <footer>
-      szczegółowe informacje na temat zasad oraz sposobu przeprowadzania egzaminu dostępne
-      sa pod adresem <br/>
-      <a href="https://cke.gov.pl/images/_KOMUNIKATY/Informacja_o_egzaminie_zawodowym_2018-2019_ost.pdf">https://cke.gov.pl/images/_KOMUNIKATY/Informacja_o_egzaminie_zawodowym_2018-2019_ost.pdf</a>
-    </footer>
+      <section>
+          <h1 class="title">Terminy</h1>
+          <p class="description">
+              lista najważniejszych dat związanych z sesją egzaminacyjną 2019
+          </p>
+          <article id="terms-container">
+              <div>
+                  Sesja letnia
+                  <time datetime="10.01.2019">10.01.2019</time>
+                  <time datetime="09.01.2019">09.01</time>-
+                  <time datetime="16.01.2019">16.01.2019</time>
+                  <time datetime="22.03.2019">22.03.2019</time>
+              </div>
+              <div>
+                  część pisemna część praktyczna ogłoszenie wyników
+              </div>
+              <div>
+                  Sesja zimowa
+                  <time datetime="18.06.2019">18.06.2019
+                      <time datetime="17.06.2019">17.06</time>-
+                      <time datetime="04.07.2019">04.07.2019</time>
+                      <time datetime="30.08.2019">30.08.2019</time>
+              </div>
+          </article>
+      </section>
+      <footer>
+          szczegółowe informacje na temat zasad oraz sposobu przeprowadzania egzaminu dostępne sa pod adresem
+          <br/>
+          <a target="_blank" href="https://cke.gov.pl/images/_KOMUNIKATY/Informacja_o_egzaminie_zawodowym_2018-2019_ost.pdf">https://cke.gov.pl/images/_KOMUNIKATY/Informacja_o_egzaminie_zawodowym_2018-2019_ost.pdf</a>
+      </footer>
   </article>
-	
-{% endblock %}
 
+{% endblock %}

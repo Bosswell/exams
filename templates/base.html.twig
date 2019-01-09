@@ -2,9 +2,11 @@
 <html lang="pl-PL">
   <head>
     <meta charset="UTF-8" />
-    <title>Egzaminy zawodowe</title>
-		<meta name="description" content="Wybierz swój kierunek i rozwiązuj testy online za darmo. 
-		Skorzystaj z naszej bazy ponad 3000 tysięcy pytań z aż 15 kwalifikacji. Spraw aby nadchodzący egzamin był bezstresowy!">
+    <title>{% block title %}Egzaminy zawodowe{% endblock %}</title>
+		<meta name="description" content="
+		{% block metaDescription %}Wybierz swój kierunek i rozwiązuj testy online za darmo. 
+			Skorzystaj z naszej bazy ponad 3000 tysięcy pytań z aż 15 kwalifikacji. 
+			Spraw aby nadchodzący egzamin był bezstresowy!{% endblock %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% block stylesheets %}

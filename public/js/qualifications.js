@@ -29,13 +29,20 @@ $(function() {
         }
       });
 
-      let checkbox_input = checkbox_container.find('input');
+      let checkbox_input = checkbox_container.find('select option');
       current_checkbox.attr('data-is-choosen', 'true');
       current_checkbox.addClass('checkbox-active', 300);
-      checkbox_input.val(current_checkbox.attr('data-value'));
+
+      let value = current_checkbox.attr('data-value');
+
+      checkbox_input.filter(function() {
+          return this.value == value;
+      }).prop("selected", true);
+
     }
   });
 
+  // TODO poprawić, bo pojawił się checkbox
   form.on('submit', function() {
     let errors = [];
     let isOk = true;
