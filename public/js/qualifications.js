@@ -1,15 +1,10 @@
 $(function() {
   
-  let qualifications = $('#qualifications');
   let errors_container = $('#errors-container');
         
   let form = $('#qualification-form');
   let form_qualification_id = form.find('#qualification-id');
   let form_question_quantity = form.find('#question-quantity');
-
-  // Clear input values, in case if user refresh site
-  form_qualification_id.val(null);
-  form_question_quantity.val(null);
 
   let checkbox_group = $('.checkbox-group');
 
@@ -39,6 +34,7 @@ $(function() {
           return this.value == value;
       }).prop("selected", true);
 
+      checkbox_input.parent().attr('is-filled', 'true');
     }
   });
 
@@ -47,12 +43,12 @@ $(function() {
     let errors = [];
     let isOk = true;
 
-    if (form_qualification_id.val() == '') {
+    if (form_qualification_id.attr('is-filled') != 'true') {
       errors.push('Nie wybrano kwalifikacji.');
       isOk = false;
     }
 
-    if (form_question_quantity.val() == '') {
+    if (form_question_quantity.attr('is-filled') != 'true') {
       errors.push('Nie wybrano ilości pytań.');
       isOk = false;
     }

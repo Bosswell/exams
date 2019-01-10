@@ -16,14 +16,15 @@ $(function() {
 
     let next_question_btn = $('#next-question');
 
+    /**
+     * Hide previous question and show new. Also change square color.
+     */
     next_question_btn.on('click', function() {
-
         if (!latest_question_number) {
             latest_question_number = 0;
         }
 
         let current_question_number = latest_question_number + 1;
-
         let square = squares.eq(current_question_number);
 
         if (square.attr('data-is-filled') == 'false') {
@@ -41,10 +42,13 @@ $(function() {
         } else {
             next_question_btn.show();
         }
-
         scrollToQuestionsBlock();
     });
 
+    /**
+     * Fill out specific checkbox. 
+     * Change input value
+     */
     checkbox.on('click', function() {
         let current_checkbox = $(this);
         let answer_group = $(this).parent().parent();
@@ -82,7 +86,7 @@ $(function() {
     });
 
     /**
-     * TODO desc
+     * Hide/Show question
      */
     squares.on('click', function() {
         let square = $(this);
@@ -109,26 +113,30 @@ $(function() {
         scrollToQuestionsBlock();
     });
 
-    // Works great
-    squares.on('mouseenter', function() {
-        let square = $(this);
+    /**
+     * Show/hide question query in a quick view block
+     */
+    squares.on({
+        mouseenter: function () {
+            let square = $(this);
 
-        let question_number = square.attr('data-question-number');
-        let questions = $('.question-group .query');
-        let question_query = questions.eq(question_number).text();
-            
-        question_query = jQuery.trim(question_query).substring(0, 80)
-                            .split(" ").slice(0, -1).join(" ") + "...";
+            let question_number = square.attr('data-question-number');
+            let questions = $('.question-group .query');
+            let question_query = questions.eq(question_number).text();
+                
+            question_query = jQuery.trim(question_query).substring(0, 80)
+                                .split(" ").slice(0, -1).join(" ") + "...";
 
-        quick_view.text(question_query);
+            quick_view.text(question_query);
+        },
+        mouseleave: function () {
+            $('#quick-view').text('');
+        }
     });
 
-    // Nothing to comment
-    squares.on('mouseleave', function() { 
-        $('#quick-view').text('');
-    });
-
-    // It's ok
+    /**
+     * Check if form is not empty
+     */
     form.on('submit', function() {
         let isOk = true;
         squares.each(function(index) {
@@ -143,6 +151,10 @@ $(function() {
             squares.removeClass('square-error', durationRemoveClass);
         }, 2000);
 
+        setTimeout(function() {
+            errors_container.html('');
+        }, 4000)
+
         if (!isOk) {
             let html = '<div class="alert alert-danger">Nie udzielono odpowiedzi na wszystkie pytania.</div>';
             errors_container.html(html);
@@ -151,7 +163,9 @@ $(function() {
         }
     });
 
-    // Only for mobile/tablets
+    /**
+     * Go to specific question content for tablet/mobile
+     */
     function scrollToQuestionsBlock() {
         let position = questions_container.offset().top - 85;
         let windowObj = $(window);
