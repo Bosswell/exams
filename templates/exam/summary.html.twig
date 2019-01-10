@@ -17,29 +17,30 @@
 
     <div class="left-white-space">
         <div id="questions-panel">
-            {% for question in questions %} {% if loop.index0 % 2 == 0 %}
-            <div class="column">
+            {% for question in questions %} 
+                {% if loop.index0 % 2 == 0 %}
+                    <div class="column">
                 {% endif %}
-                <div data-question-number="{{ loop.index0 }}" class="square {% if question.userAnswer != question.correct %}square-false{% else %}square-correct{% endif %}"></div>
-                {% if (loop.index % 2 == 0) %}
-            </div>
-            {% endif %} {% endfor %} {% if questions|length % 2 == 1 %}
+                        <div data-question-number="{{ loop.index0 }}" class="square {% if question.userAnswer != question.correct %}square-false{% else %}square-correct{% endif %}"></div>
+                {% if (loop.index % 2 == 0 and loop.index != 0) %}
+                    </div>
+                {% endif %} 
+            {% endfor %} 
+            
+            {% if questions|length % 2 == 1 %}
+                </div>
+            {% endif %}
+            <p id="quick-view"></p>
+            <div class="floating-cleaner"></div>
         </div>
-        {% endif %}
-        <p id="quick-view"></p>
-        <div class="floating-cleaner"></div>
-    </div>
     </div>
 
-    <div class="left-white-space summary-big-container" id="question-group-container">
+    <div class="left-white-space" id="question-group-container">
         {% for question in questions %}
-        <div class="question-group row">
-            <div class="col-lg-12">
+            <section class="question-group">
                 <p class="text-faded text-before-devider">pytanie {{ loop.index }} z {{ question_quantity }}</p>
-
                 <div class="devider summary-devider"></div>
-
-                <label>{{ loop.index }}. <span class="query">{{ question.query | raw }}</span></label>
+                <h1 class="query">{{ loop.index }}. {{ question.query | raw }}</h1>
 
                 <div class="row">
                     <div class="col-lg-{% if question.imageName %}6{% else %}12{% endif %}">
@@ -47,60 +48,58 @@
                             <div class="column question-panel-margin">
                                 <div class="checkbox-group answer {% if question.correct == 1 %}checkbox-correct{% elseif question.userAnswer == 1 %}checkbox-false{% else %} {% set neutral = true %} {% endif %}">
                                     {% if (neutral is defined) and (neutral == true) %}
-                                    <div class="checkbox"></div>
+                                        <div class="checkbox"></div>
                                     {% set neutral = false %} {% endif %}
                                     <label class="checkbox-label">{{ question.answerA | raw }}</label>
                                 </div>
                                 <div class="checkbox-group answer {% if question.correct == 2 %}checkbox-correct{% elseif question.userAnswer == 2 %}checkbox-false{% else %} {% set neutral = true %}{% endif %}">
                                     {% if (neutral is defined) and (neutral == true) %}
-                                    <div class="checkbox"></div>
+                                        <div class="checkbox"></div>
                                     {% set neutral = false %} {% endif %}
                                     <label class="checkbox-label">{{ question.answerB | raw }}</label>
                                 </div>
                             </div>
+
                             <div class="column">
                                 <div class="checkbox-group answer {% if question.correct == 3 %}checkbox-correct{% elseif question.userAnswer == 3 %}checkbox-false{% else %} {% set neutral = true %}{% endif %}">
                                     {% if (neutral is defined) and (neutral == true) %}
-                                    <div class="checkbox"></div>
+                                        <div class="checkbox"></div>
                                     {% set neutral = false %} {% endif %}
                                     <label class="checkbox-label">{{ question.answerC | raw }}</label>
                                 </div>
                                 <div class="checkbox-group answer {% if question.correct == 4 %}checkbox-correct{% elseif question.userAnswer == 4 %}checkbox-false{% else %} {% set neutral = true %}{% endif %}">
                                     {% if (neutral is defined) and (neutral == true) %}
-                                    <div class="checkbox"></div>
+                                        <div class="checkbox"></div>
                                     {% set neutral = false %} {% endif %}
                                     <label class="checkbox-label">{{ question.answerD | raw }}</label>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     {% if question.imageName %}
-                    <div class="col-lg-6">
-                        <img class="img-fluid" style="margin-top:15px;" src="{{ asset('uploads/exams/'~question.imageName) }}" alt="Nie udało się załadować zdjęcia">
-                    </div>
+                        <div class="col-lg-6">
+                            <img class="img-fluid" style="margin-top:15px;" src="{{ asset('uploads/exams/'~question.imageName) }}" alt="Nie udało się załadować zdjęcia">
+                        </div>
                     {% endif %}
                 </div>
-
-            </div>
-        </div>
+            </section>
         {% endfor %}
         <div class="floating-cleaner"></div>
-    </div>
-    <div class="left-white-space summary-container">
-        <div class="row">
-            <div class="col-lg-12">
-                <p class="text-faded text-before-devider">sprawdź udzielone prze Ciebie odpowiedzi klikając w odpowiednie kratki</p>
-                <div class="devider summary-devider"></div>
-                <div class="summary-info">
-                    <h2 class="summary-header">Ilość poprawnych odpowiedzi: {{ points }}</h2>
-                    <h2 class="summary-header">Ilość złych odpowiedzi: {{ question_quantity - points }} </h2>
-                    <div class="exam-percent-container">
-                        <h2 class="summary-header">Wynik:</h2>
-                        <p class="percent-label">{{ percent }} %</p>
-                    </div>
+
+        <section>
+            <p class="text-faded text-before-devider">sprawdź udzielone prze Ciebie odpowiedzi klikając w odpowiednie kratki</p>
+            <div class="devider summary-devider"></div>
+            
+            <div class="summary-info">
+                <h2 class="summary-header">Ilość poprawnych odpowiedzi: {{ points }}</h2>
+                <h2 class="summary-header">Ilość złych odpowiedzi: {{ question_quantity - points }} </h2>
+                <div class="exam-percent-container">
+                    <h2 class="summary-header">Wynik:</h2>
+                    <p class="percent-label">{{ percent }} %</p>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <div class="bottom-btn-container">
