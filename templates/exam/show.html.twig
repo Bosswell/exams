@@ -39,8 +39,8 @@
                         <p class="text-faded text-before-devider">pytanie {{ loop.index }} z {{ question_quantity }}</p>
                         <div class="devider exam-devider"></div>
 
-                        <h1 class="query">{{ loop.index }}. {{ question.query | raw }}</h1>
-
+                        <h1 style="font-size: 18px;">{{ loop.index }}. <span class="query">{{ question.query | raw }}</span></h1>
+                        
                         <div class="row">
                             <div class="answers-group col-lg-{% if question.imageName %}6{% else %}12{% endif %}" data-question-number="{{ loop.index0 }}">
                                 <select class="user_answer" name="answers[{{ loop.index0 }}]" hidden>
