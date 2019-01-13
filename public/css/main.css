@@ -95,11 +95,9 @@ a:hover {
 }
 
 #terms-container {
-    width: 800px;
-    margin: 0 auto;
-    background: red;
-    height: 300px;
-    margin-bottom: 50px;
+    width: 750px;
+    margin: 50px auto;
+    height: 220px;
 }
 
 .allign-left {
@@ -112,4 +110,42 @@ a:hover {
 
 .allign-center {
     text-align: center;
+}
+
+#terms-container .term-block {
+    width: 250px;
+    float: left;
+}
+
+.term-title {
+    font-weight: 700;
+    font-size: 23px;
+    margin-right: 10px;
+}
+
+.term-block:last-of-type .term-title {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.term-subtitle {
+    display: block;
+    font-size: 20px;
+    color: grey;
+    margin-top: 20px;
+}
+
+.term-date {
+    display: block;
+    font-size: 19px;
+    color: #000;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.term-square {
+    width: 35px;
+    height: 35px;
+    background: rgb(86, 191, 209);
+    margin-bottom: 15px;
 }
