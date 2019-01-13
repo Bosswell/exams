@@ -1,0 +1,101 @@
+#terminy footer {
+    font-size: 17px;
+    border-top: 1px solid #979797;
+    color: grey;
+    font-weight: 400;
+}
+
+#terms-container {
+    width: 750px;
+    margin: 50px auto;
+    height: 220px;
+}
+
+#terms-container .term-block {
+    width: 250px;
+    float: left;
+}
+
+.term-title {
+    font-weight: 700;
+    font-size: 23px;
+    margin-right: 10px;
+}
+
+#desktop-terms .term-block:last-of-type .term-title {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+#desktop-terms .term-block:first-of-type .term-title,
+#desktop-terms .term-block:first-of-type .term-square {
+    float: right;
+}
+
+#desktop-terms .term-block:last-of-type .term-title,
+#desktop-terms .term-block:last-of-type .term-square {
+    float: left;
+}
+
+#desktop-terms .term-block:first-of-type {
+    text-align: right;
+}
+
+#desktop-terms .term-block:last-of-type {
+    text-align: left;;
+}
+
+.term-subtitle {
+    display: block;
+    font-size: 20px;
+    color: grey;
+    margin-top: 20px;
+}
+
+#mobile-terms .term-subtitle {
+    margin-top: 0;
+}
+
+.term-date {
+    display: block;
+    font-size: 19px;
+    color: #000;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+#mobile-terms .term-date {
+    margin-top: 0;
+}
+
+.term-square {
+    width: 35px;
+    height: 35px;
+    background: rgb(86, 191, 209);
+    margin-bottom: 15px;
+}
+
+
+.term-middle {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 50px;
+}
+
+#mobile-terms {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    #terms-container {
+        height: 460px;
+    }
+
+    #mobile-terms {
+        display: block;
+    }
+
+    #desktop-terms {
+        display: none;
+    }
+}
