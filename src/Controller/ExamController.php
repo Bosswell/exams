@@ -39,7 +39,7 @@ class ExamController extends AbstractController
     /**
      * @Route("/egzamin/{question_quantity}/{friendly_stage_url}/{qualification_id}-{friendly_qualification_url}", name="generate_exam")
      */
-    public function generateExam(Request $request, $qualification_id, $question_quantity)
+    public function generateExam(Request $request, $qualification_id, $question_quantity, $friendly_qualification_url)
     {
         if (empty($qualification_id) || empty($question_quantity)) {
             return $this->redirectToRoute('homepage', null, 302);
@@ -61,6 +61,8 @@ class ExamController extends AbstractController
         }
 
         $request->getSession()->set('exam', $exam);
+        $request->getSession()->set('qualification_id', $qualification_id);
+        $request->getSession()->set('friendly_qualification_url', $friendly_qualification_url);
 
         return $this->render('exam/show.html.twig', [
             'questions'  => $questions,
@@ -81,20 +83,26 @@ class ExamController extends AbstractController
         }
 
         $current_stage_id = $request->getSession()->get('current_stage_id');
+        $friendly_qualification_url = $request->getSession()->get('friendly_qualification_url');
+        $friendly_stage_url = $request->getSession()->get('friendly_stage_url');
+        $qualification_id = $request->getSession()->get('qualification_id');
 
         $answers = $request->request->all();
         $exam->setAnswers($answers['answers'])
             ->checkQuestions();
 
-        // $request->getSession()->remove('exam');
-        // $request->getSession()->remove('current_stage_id');
+        $request->getSession()->remove('exam');
+        $request->getSession()->remove('current_stage_id');
         
         return $this->render('exam/summary.html.twig', [
             'questions'         => $exam->getQuestions(),
             'points'            => $exam->getPoints(),
             'percent'           => $exam->getPercent(),
             'question_quantity' => $exam->getQuestionQuantity(),
-            'current_stage_id'  => $current_stage_id
+            'current_stage_id'  => $current_stage_id,
+            'friendly_qualification_url' => $friendly_qualification_url,
+            'friendly_stage_url' => $friendly_stage_url,
+            'qualification_id' => $qualification_id
         ]);
     }
 }
