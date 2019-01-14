@@ -39,7 +39,7 @@ class ExamController extends AbstractController
     /**
      * @Route("/egzamin/{question_quantity}/{friendly_stage_url}/{qualification_id}-{friendly_qualification_url}", name="generate_exam")
      */
-    public function generateExam(Request $request, $qualification_id, $question_quantity, $friendly_qualification_url)
+    public function generateExam(Request $request, $qualification_id, $question_quantity, $friendly_qualification_url, $friendly_stage_url)
     {
         if (empty($qualification_id) || empty($question_quantity)) {
             return $this->redirectToRoute('homepage', null, 302);
@@ -63,11 +63,16 @@ class ExamController extends AbstractController
         $request->getSession()->set('exam', $exam);
         $request->getSession()->set('qualification_id', $qualification_id);
         $request->getSession()->set('friendly_qualification_url', $friendly_qualification_url);
+        $request->getSession()->set('qualification_designation', $qualification->getDesignation());
+        $request->getSession()->set('qualification_meta_desc', $qualification->getMetaDescription());
+        $stage_name = ucfirst(str_replace('-', ' ', $friendly_stage_url));
+        $request->getSession()->set('stage_name', $stage_name);
 
         return $this->render('exam/show.html.twig', [
             'questions'  => $questions,
             'qualification'    =>  $qualification,
-            'question_quantity'    =>  $question_quantity
+            'question_quantity'    =>  $question_quantity,
+            'stage_name'    =>  $stage_name,
         ]);
     }
 
@@ -86,13 +91,15 @@ class ExamController extends AbstractController
         $friendly_qualification_url = $request->getSession()->get('friendly_qualification_url');
         $friendly_stage_url = $request->getSession()->get('friendly_stage_url');
         $qualification_id = $request->getSession()->get('qualification_id');
+        $stage_name = $request->getSession()->get('stage_name');
+        $qualification_designation = $request->getSession()->get('qualification_designation');
+        $qualification_meta_desc = $request->getSession()->get('qualification_meta_desc');
 
         $answers = $request->request->all();
         $exam->setAnswers($answers['answers'])
             ->checkQuestions();
 
-        $request->getSession()->remove('exam');
-        $request->getSession()->remove('current_stage_id');
+        $request->getSession()->clear();
         
         return $this->render('exam/summary.html.twig', [
             'questions'         => $exam->getQuestions(),
@@ -102,7 +109,10 @@ class ExamController extends AbstractController
             'current_stage_id'  => $current_stage_id,
             'friendly_qualification_url' => $friendly_qualification_url,
             'friendly_stage_url' => $friendly_stage_url,
-            'qualification_id' => $qualification_id
+            'qualification_id' => $qualification_id,
+            'stage_name' => $stage_name,
+            'qualification_designation' =>  $qualification_designation,
+            'qualification_meta_desc' => $qualification_meta_desc
         ]);
     }
 }

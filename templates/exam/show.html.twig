@@ -1,4 +1,7 @@
-{% extends 'base.html.twig' %} 
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ stage_name }} - Kwalifikacja {{ qualification.designation }}{% endblock %} 
+{% block metaDescription %}{{ qualification.metaDescription }}{% endblock %} 
 
 {% block stylesheets %} 
     {{ parent() }}

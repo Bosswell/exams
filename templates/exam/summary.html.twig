@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %} 
 
+{% block title %}{{ stage_name }} - Kwalifikacja {{ qualification_designation }} / Podsumowanie{% endblock %} 
+{% block metaDescription %}{{ qualification_meta_desc }}{% endblock %} 
+
 {% block stylesheets %} 
     {{ parent() }}
 
@@ -103,7 +106,7 @@
     </div>
 
     <div class="bottom-btn-container">
-        <a href="" class="btn-nav center-btn">Wylosuj kolejny test</a>
+        <a href="{{ path('generate_exam', {'question_quantity': question_quantity, 'friendly_stage_url': friendly_stage_url, 'qualification_id': qualification_id, 'friendly_qualification_url': friendly_qualification_url}) }}" class="btn-nav center-btn">Wylosuj kolejny test</a>
     </div>
 {% endblock %} 
 
