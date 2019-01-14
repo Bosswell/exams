@@ -50,10 +50,10 @@ class Qualification
     private $questions;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=512)
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      max = 255,
+     *      max = 512,
      *      min = 20,
      *      maxMessage = "Meta description cannot be longer than {{ limit }} characters",
      *      minMessage = "Meta description must be at least {{ limit }} characters long"

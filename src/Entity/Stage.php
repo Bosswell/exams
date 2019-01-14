@@ -48,7 +48,6 @@ class Stage
      * 
      * @Vich\UploadableField(mapping="stage_directory", fileNameProperty="imageName")
      * @Assert\File()
-     * @Assert\NotBlank()
      * @Assert\Image(
      *   mimeTypes = {
      *     "image/png",
@@ -64,7 +63,6 @@ class Stage
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
      * @Assert\DateTime
      * @var string A "Y-m-d H:i:s" formatted value
      */
@@ -77,7 +75,6 @@ class Stage
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank()
      * @Assert\Length(
      *      max = 100,
      *      min = 10,
@@ -88,10 +85,10 @@ class Stage
     private $friendlyUrl;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=512)
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      max = 100,
+     *      max = 512,
      *      min = 20,
      *      maxMessage = "Meta description cannot be longer than {{ limit }} characters",
      *      minMessage = "Meta description must be at least {{ limit }} characters long"
