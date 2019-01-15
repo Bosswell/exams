@@ -39,10 +39,13 @@
 
                 {% for qualification in qualifications %}
                     {# Generate hidden links for google bot #}
-                    <a href="{{ path('generate_exam', {'question_quantity': 5, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}" hidden></a>
-                    <a href="{{ path('generate_exam', {'question_quantity': 10, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}" hidden></a>
-                    <a href="{{ path('generate_exam', {'question_quantity': 20, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}" hidden></a>
-                    <a href="{{ path('generate_exam', {'question_quantity': 40, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}" hidden></a>
+                    <div hidden>
+                        <a href="{{ path('generate_exam', {'question_quantity': 5, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}"></a>
+                        <a href="{{ path('generate_exam', {'question_quantity': 10, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}"></a>
+                        <a href="{{ path('generate_exam', {'question_quantity': 20, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}"></a>
+                        <a href="{{ path('generate_exam', {'question_quantity': 40, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}"></a>
+                    </div>
+
                     <div class="checkbox-group qualifcation" data-value="{{ qualification.id }}">
                         <div class="checkbox"></div>
                         <div class="checkbox-label">Kwalifikacja {{ qualification.designation }}</div>
