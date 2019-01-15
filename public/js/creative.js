@@ -61,3 +61,14 @@
   }, 300);
 
 })(jQuery); // End of use strict
+
+// Add active class to menu
+// Dodaj waypointy
+function findHash () {
+  if(window.location.hash) {
+      let hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+      
+  } else {
+      
+  }
+}
