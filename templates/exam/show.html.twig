@@ -13,6 +13,17 @@
 {% endblock %} 
 
 {% block body %}
+
+    {# ------ Breadcrumb -------- #}
+    <nav aria-label="breadcrumb" id="breadcrumb-nav">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('home_page') }}">Strona główna</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('stage', {'id': current_stage_id, 'friendly_url': friendly_stage_url}) }}">{{ stage_name }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Kwalifikacja {{ qualification.designation }}</li>
+        </ol>
+    </nav>
+    {# ------ End breadcrumb -------- #}
+
     <section class="qualification-title-container">
         <h1 class="qualification-title left-white-space">Kwalifikacja {{ qualification.designation }} - {{ qualification.description }}</h1>
     </section>

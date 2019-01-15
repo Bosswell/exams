@@ -46,10 +46,6 @@
      }
 }
 
-/* .question-panel-margin-mobile {
-   margin-right: 15px;
-} */
-
 #quick-view {
    display: inline-block;
    color: grey;
@@ -103,7 +99,7 @@ section {
     border-bottom: 2px solid #000; 
     max-width: 1000px;
     padding-bottom: 5px;
-    padding-top: 150px;
+    padding-top: 200px;
 }
 
 .qualification-title {

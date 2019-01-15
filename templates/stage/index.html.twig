@@ -8,7 +8,19 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/checkboxes.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/page-layout-helpers.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/qualification.css') }}" /> {% endblock %} {% block body %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/qualification.css') }}" /> 
+{% endblock %} 
+
+{% block body %}
+
+    {# ------ Breadcrumb -------- #}
+    <nav aria-label="breadcrumb" id="breadcrumb-nav">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('home_page') }}">Strona główna</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ stage.designation }}</li>
+        </ol>
+    </nav>
+    {# ------ End breadcrumb -------- #}
 
     <section class="qualification-title-container">
         <h1 class="left-white-space qualification-title">{{ stage.designation }}</h1>

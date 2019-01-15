@@ -88,3 +88,33 @@
 .floating-cleaner {
     clear: both;
 }
+
+#breadcrumb-nav {
+    position: absolute; 
+    top: 120px;
+    left: 120px;
+}
+
+@media (max-width: 767px) {
+    #breadcrumb-nav {
+        left: 15px;
+    }
+}
+
+.breadcrumb {
+    background-color: transparent;
+}
+  
+.breadcrumb-item.active {
+    color: black;
+    font-weight: 600;
+}
+
+.breadcrumb-item a {
+    color: #000;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: none;
+    color: #878787;
+}

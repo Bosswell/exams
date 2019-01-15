@@ -68,11 +68,15 @@ class ExamController extends AbstractController
         $stage_name = ucfirst(str_replace('-', ' ', $friendly_stage_url));
         $request->getSession()->set('stage_name', $stage_name);
 
+        $current_stage_id = $request->getSession()->get('current_stage_id');
+
         return $this->render('exam/show.html.twig', [
             'questions'  => $questions,
             'qualification'    =>  $qualification,
             'question_quantity'    =>  $question_quantity,
             'stage_name'    =>  $stage_name,
+            'current_stage_id' => $current_stage_id,
+            'friendly_stage_url' => $friendly_stage_url
         ]);
     }
 
