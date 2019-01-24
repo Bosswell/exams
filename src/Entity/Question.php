@@ -112,9 +112,9 @@ class Question
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=true)
+     * @ORM\Column(type="string", length=20, nullable=true)
      * @Assert\Length(
-     *      max = 10,
+     *      max = 20,
      *      maxMessage = "Session name cannot be longer than {{ limit }} characters"
      * )
      */
