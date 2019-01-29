@@ -1,0 +1,10 @@
+<form method="POST" action="{{ path('parse_exam') }}">
+    <input type="text" placeholder="Podaj link do strony z wyborem egzaminów" name="exams_link" style="width:300px;height:30px"><br/>
+    <input type="text" placeholder="Podaj link egzaminu" name="exam_link" style="width:300px;height:30px"><br/>
+    <select name="qualification_id">
+        {% for qualification in qualifications %}
+            <option value="{{ qualification.id }}">{{ qualification }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Wydobądź pytania">
+</form>

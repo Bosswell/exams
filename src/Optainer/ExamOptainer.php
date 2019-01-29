@@ -94,11 +94,12 @@ class ExamOptainer
         $finder = new \DomXPath($dom);
         $class = self::QUESTION_ITEM_CLASS;
         $questions = $finder->query("//*[contains(@class, '$class')]");
-        dump($questions);
+        
         $i = 0;
         foreach ($questions as $node) {   
             $query = $node->getElementsByTagName('div')->item(2)->nodeValue;
             $answers = $node->getElementsByTagName('li');
+
             $img = '';
 
             if ($node->getElementsByTagName('img')->item(0)) {
@@ -106,12 +107,35 @@ class ExamOptainer
             }
 
             // Clear variables to get clean strings
-            $answersArray = [
-                'answer_a' => trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $answers->item(0)->nodeValue))),
-                'answer_b' => trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $answers->item(1)->nodeValue))),
-                'answer_c' => trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $answers->item(2)->nodeValue))),
-                'answer_d' => trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $answers->item(3)->nodeValue))),
-            ];
+            if ($answers->item(0)) {
+                $answersArray['answer_a'] = trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $answers->item(0)->nodeValue)));
+            } else {
+                $answersArray['answer_a'] = '';
+            }
+
+            if ($answers->item(1)) {
+                $answersArray['answer_b'] = trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $answers->item(1)->nodeValue)));
+            } else {
+                $answersArray['answer_b'] = '';
+            }
+
+            if ($answers->item(2)) {
+                $answersArray['answer_c'] = trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $answers->item(2)->nodeValue)));
+            } else {
+                $answersArray['answer_c'] = '';
+            }
+
+            if ($answers->item(3)) {
+                $answersArray['answer_d'] = trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $answers->item(3)->nodeValue)));
+            } else {
+                $answersArray['answer_d'] = '';
+            }
+            // $answersArray = [
+            //     'answer_a' => trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $answers->item(0)->nodeValue))),
+            //     'answer_b' => trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $answers->item(1)->nodeValue))),
+            //     'answer_c' => trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $answers->item(2)->nodeValue))),
+            //     'answer_d' => trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $answers->item(3)->nodeValue))),
+            // ];
 
             $img = trim(preg_replace('/\s\s+/', ' ', str_replace("\n", " ", $img)));
             
@@ -157,9 +181,21 @@ class ExamOptainer
         $lastUrlPart = $urlParts[count($urlParts) - 1];
         $explodedInfo = explode('_', $lastUrlPart);
 
+        if (isset($explodedInfo[1])) {
+            $session = $explodedInfo[1];
+        } else {
+            $session = '';
+        }
+
+        if (isset($explodedInfo[2])) {
+            $year = $explodedInfo[2];
+        } else {
+            $year = '';
+        }
+
         return $questionInfo = [
-            'session'   =>  $explodedInfo[1],
-            'year'      =>  $explodedInfo[2]    
+            'session'   =>  $session,
+            'year'      =>  $year   
         ];
     }
 

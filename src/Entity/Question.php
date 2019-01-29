@@ -129,6 +129,11 @@ class Question
      */
     private $year;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $external_id;
+
     public function __construct()
     {
         $now = new \DateTime('now');
@@ -167,11 +172,11 @@ class Question
     }
 	
 	public function setUserAnswer(int $user_answer) : self
-                               {
-                                   $this->user_answer = $user_answer;
-                           
-                                   return $this;
-                               }
+                                        {
+                                            $this->user_answer = $user_answer;
+                                    
+                                            return $this;
+                                        }
 
     public function getUserAnswer() : int
     {
@@ -318,6 +323,18 @@ class Question
     public function setYear(?string $year): self
     {
         $this->year = $year;
+
+        return $this;
+    }
+
+    public function getExternalId(): ?int
+    {
+        return $this->external_id;
+    }
+
+    public function setExternalId(?int $external_id): self
+    {
+        $this->external_id = $external_id;
 
         return $this;
     }

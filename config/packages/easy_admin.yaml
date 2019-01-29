@@ -10,6 +10,7 @@ easy_admin:
             - Question
             - { label: 'Zaawansowane' }
             - { label: 'Wyczyść cache', route: 'clear_cache', icon: 'trash' }
+            - { label: 'Wydobądź pytania', route: 'optain_exam', icon: 'car' }
     entities:
         Qualification:
             class: App\Entity\Qualification
