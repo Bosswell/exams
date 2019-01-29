@@ -91,13 +91,13 @@
 
 #breadcrumb-nav {
     position: absolute; 
-    top: 120px;
+    top: 110px;
     left: 120px;
 }
 
 @media (max-width: 767px) {
     #breadcrumb-nav {
-        left: 15px;
+        left: 5px;
     }
 }
 
