@@ -60,15 +60,27 @@
     distance: '0px'
   }, 300);
 
+
+  let $footerList = $('#footer .mobile-clickable');
+
+  $footerList.on('click', function () {
+      let $item = $(this);
+      let $icon = $item.find('.mobile-icon');
+      let $element = $item.parent().find('.expand-footer');
+
+      if ($item.attr('data-expanded') === 'true') {
+          // Hide
+          $icon.text('+');
+          $element.hide();
+          $item.attr('data-expanded', 'false');
+      } else {
+          // Show
+          $icon.text('×');
+          $element.show();
+          $item.attr('data-expanded', 'true');
+      }
+      
+  })
+
 })(jQuery); // End of use strict
 
-// Add active class to menu
-// Dodaj waypointy
-function findHash () {
-  if(window.location.hash) {
-      let hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
-      
-  } else {
-      
-  }
-}

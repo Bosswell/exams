@@ -1,9 +1,25 @@
 #footer {
     background-color: #e7e8ea;
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 35px;
     margin-top: 120px;
 }
+
+#mobile-block-exams {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    #desktop-block-exams {
+        display: none;
+    }
+
+    #mobile-block-exams {
+        display: block;
+    }
+}
+
+/* DESKTOP FOOTER */
 
 #footer .footer-block-title {
     font-size: .9rem;
@@ -20,68 +36,159 @@
     padding-bottom: 20px;
 }
 
-#footer #block-exams #exam-list {
+#footer #desktop-block-exams #exam-list {
     padding-left: 0;
     list-style-type: none;
     line-height: 1.2;
 }
 
-#footer #block-exams #exam-list li {
+#footer #desktop-block-exams #exam-list li {
     padding: 3px;
 }
 
-@media (max-width: 1140px) {
-    #footer #block-exams #exam-list li:last-child {
-        border: none;
-    }
-
-    #footer #first-footer-block {
-        text-align: center;
-    }
-
-    #footer #footer-about-us,
-    #footer .footer-block-title {
-        text-align: center;
-    }
-
-    #footer .footer-block-title {
-        padding-bottom: 15px;
-    }
-}
-
-#footer #block-exams #exam-list li a {
+#footer #desktop-block-exams #exam-list li a {
     text-decoration: none;
     color: #212529;
 }
 
-#footer #block-exams #exam-list li a:hover {
+#footer #desktop-block-exams #exam-list li a:hover {
     color: #979797;
 }
 
-#footer #footer-about-us .copyright {
+#footer #desktop-footer-about-us .copyright {
     font-size: 15px;
     display: block;
 }
 
-#footer #footer-about-us a:hover {
+#footer #desktop-footer-about-us a:hover {
     text-decoration: none;
 }
 
-#footer #footer-about-us #copyright-info {
+#footer #desktop-footer-about-us .copyright-info {
     line-height: 1.2;
     font-weight: 400;
     margin-top: 30px;
 }
 
-#footer #footer-exam-terms-block ul {
+#footer #desktop-footer-exam-deadlines-block ul {
     padding: 0;
     list-style-type: none;
 }
 
-#footer #footer-exam-terms-block ul li ul {
+#footer #desktop-footer-exam-deadlines-block ul li ul {
     padding-left: 10px;
 }
 
-#footer #footer-exam-terms-block time {
+#footer #desktop-footer-exam-deadlines-block time {
     font-weight: 600;
+}
+
+#footer #mobile-footer-exam-deadlines-block {
+    display: none;
+}
+
+#footer #mobile-footer-about-us {
+    display: none;
+}
+
+#mobile-last-footer-block {
+    display: none
+}
+
+@media (max-width: 992px) {
+    #footer #desktop-footer-exam-deadlines-block {
+        display: none;
+    }
+
+    #footer #mobile-footer-exam-deadlines-block {
+        display: block;
+    }
+
+    #footer #desktop-footer-about-us {
+        display: none
+    }
+
+    #footer #mobile-footer-about-us {
+        display: block;
+    }
+
+    #desktop-first-footer-block {
+        display: none;
+    }
+
+    #mobile-last-footer-block {
+        display: block;
+    }
+}
+
+/* MOBILE FOOTER */
+
+#mobile-info-block {
+    text-align: center; 
+    padding-top: 20px;
+}
+
+.mobile-footer-container {
+    position: relative;
+    border-bottom: 1px solid #979797;
+}
+
+.mobile-block-title {
+    margin: 0;
+}
+
+.mobile-icon {
+    font-size: 50px;
+    position: absolute; 
+    right: 15px;
+    top: -20px;
+}
+
+.mobile-clickable {
+    cursor: pointer;
+    padding: 15px 0;
+}
+
+#mobile-block-exams #exam-list {
+    list-style-type: none;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+#mobile-block-exams #exam-list li {
+    padding: 6px 0;
+}
+
+#mobile-block-exams #exam-list li:last-child {
+    border: none;
+}
+
+.deadline-space {
+    padding-left: 15px;
+}
+
+.mobile-deadline-session {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px
+}
+
+.mobile-deadline-padding {
+    padding-bottom: 5px;
+}
+
+.mobile-deadline-container {
+    padding: 15px 0;
+}
+
+#mobile-footer-about-us .footer-block-info {
+    text-align: center;
+}
+
+.expand-footer {
+    display: none;
+}
+
+#mobile-footer-about-us .copyright-info {
+    text-align: center;
 }

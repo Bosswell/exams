@@ -1,0 +1,29 @@
+<article class="container" id="contact">
+    <section>
+        <h1 class="title">Kontakt</h1>
+        <p class="description">
+            Masz jakieś pytania? <br/>
+            Zauważyłeś błąd w działaniu witryny? <br/>
+            Może wpadł Ci do głowy pomysł odnośnie ulepszenia strony? <br/>
+            Śmiało, skontaktuj się z nami! Postaramy się wyjść naprzeciw twoim oczekiwaniom. 
+        </p>
+    </section>
+
+        <form id="contact-form" method="POST" action="#">
+            <div class="form-row">
+                <div class="col-12 col-md-6">
+                    <input type="text" class="form-control" placeholder="Imię" id="name" name="name" required>
+                </div>
+                <div class="col-12 col-md-6">
+                    <input type="email" class="form-control" id="email" placeholder="Adres email" name="email" required>
+                </div>
+            </div>
+
+            <div class="form-group" id="message-group">
+                <textarea placeholder="Wiadomość" class="form-control" name="message" id="message" rows="7" required></textarea>
+            </div>
+
+            <button type="submit" class="btn float-right btn-nav" id="contact-submit" type="submit">Wyślij wiadomość</button>
+        </form>
+
+    </article>

@@ -1,0 +1,29 @@
+<section id="desktop-block-exams">
+    <h1 class="footer-block-title">Egzaminy</h1>
+    <nav>
+        <ul id="exam-list">
+            {% for stage in stagesGenerator.getAll %}
+                <li>
+                    <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">{{ stage.designation }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</section>
+
+<section id="mobile-block-exams">
+    <nav class="mobile-footer-container">
+        <div class="mobile-clickable">
+            <h1 class="footer-block-title mobile-block-title">Dostępne egzaminy</h1>
+            <span class="mobile-icon">+</span>
+        </div>
+
+        <ul id="exam-list" class="expand-footer">
+            {% for stage in stagesGenerator.getAll %}
+                <li>
+                    <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">{{ stage.designation }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</section>

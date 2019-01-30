@@ -1,0 +1,28 @@
+{% block footer %}
+	<footer id="footer">
+		<div class="container">
+			<div class="row">
+                
+				<div class="col-lg-3" id="desktop-first-footer-block">
+                    {% include 'footer/first-block.html.twig' %}
+				</div>
+
+                <div class="col-lg-3">
+                    {% include 'footer/stages-block.html.twig' %}
+                </div>
+
+                <div class="col-lg-3">
+                    {% include 'footer/deadlines-block.html.twig' %}
+                </div>
+
+                <div class="col-lg-3">
+                    {% include 'footer/contact-block.html.twig' %}
+                </div>
+
+                <div class="col-lg-3" id="mobile-last-footer-block">
+                    {% include 'footer/mobile-last-block.html.twig' %}
+				</div>
+		    </div>
+	    </div>
+    </footer>
+{% endblock %}

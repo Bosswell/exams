@@ -6,58 +6,58 @@
     font-weight: 400;
 }
 
-#terms-container {
+#deadlines-container {
     max-width: 750px;
     margin: 50px auto;
     height: 220px;
 }
 
-#terms-container .term-block {
+#deadlines-container .deadline-block {
     width: 250px;
     float: left;
 }
 
-.term-title {
+.deadline-title {
     font-weight: 700;
     font-size: 23px;
     margin-right: 10px;
 }
 
-#desktop-terms .term-block:last-of-type .term-title {
+#desktop-deadlines .deadline-block:last-of-type .deadline-title {
     margin-right: 0;
     margin-left: 10px;
 }
 
-#desktop-terms .term-block:first-of-type .term-title,
-#desktop-terms .term-block:first-of-type .term-square {
+#desktop-deadlines .deadline-block:first-of-type .deadline-title,
+#desktop-deadlines .deadline-block:first-of-type .deadline-square {
     float: right;
 }
 
-#desktop-terms .term-block:last-of-type .term-title,
-#desktop-terms .term-block:last-of-type .term-square {
+#desktop-deadlines .deadline-block:last-of-type .deadline-title,
+#desktop-deadlines .deadline-block:last-of-type .deadline-square {
     float: left;
 }
 
-#desktop-terms .term-block:first-of-type {
+#desktop-deadlines .deadline-block:first-of-type {
     text-align: right;
 }
 
-#desktop-terms .term-block:last-of-type {
+#desktop-deadlines .deadline-block:last-of-type {
     text-align: left;;
 }
 
-.term-subtitle {
+.deadline-subtitle {
     display: block;
     font-size: 20px;
     color: grey;
     margin-top: 20px;
 }
 
-#mobile-terms .term-subtitle {
+#mobile-deadlines .deadline-subtitle {
     margin-top: 0;
 }
 
-.term-date {
+.deadline-date {
     display: block;
     font-size: 19px;
     color: #000;
@@ -65,11 +65,11 @@
     margin-top: 20px;
 }
 
-#mobile-terms .term-date {
+#mobile-deadlines .deadline-date {
     margin-top: 0;
 }
 
-.term-square {
+.deadline-square {
     width: 35px;
     height: 35px;
     background: rgb(86, 191, 209);
@@ -77,26 +77,26 @@
 }
 
 
-.term-middle {
+.deadline-middle {
     text-align: center;
     font-size: 18px;
     margin-top: 50px;
 }
 
-#mobile-terms {
+#mobile-deadlines {
     display: none;
 }
 
-@media (max-width: 800px) {
-    #terms-container {
+@media (max-width: 992px) {
+    #deadlines-container {
         height: 460px;
     }
 
-    #mobile-terms {
+    #mobile-deadlines {
         display: block;
     }
 
-    #desktop-terms {
+    #desktop-deadlines {
         display: none;
     }
 }

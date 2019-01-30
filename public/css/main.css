@@ -4,7 +4,8 @@
 }
   
 #egzaminy,
-#terminy {
+#terminy,
+#contact {
     padding-top: 100px;
 }
   
@@ -85,4 +86,22 @@
 
 a:hover {
     text-decoration: none;
+}
+
+#contact-form {
+    margin-top: 50px;
+}
+
+#contact-form #message-group {
+    margin-top: 20px;
+}
+
+#contact-form #contact-submit {
+    padding: 15px;
+}
+
+@media (max-width: 768px) {
+    #contact-form #email {
+        margin-top: 10px;
+    }
 }
