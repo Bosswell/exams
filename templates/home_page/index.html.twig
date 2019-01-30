@@ -37,7 +37,9 @@
             {% for stage in stages %}
             <div class="job-container">
                 <div class="job-img-container">
-                    <img class="job-img" src="{{ asset('uploads/stage/'~stage.image_name) }}" alt="Wybierz kategorie">
+                    <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">
+                        <img class="job-img" src="{{ asset('uploads/stage/'~stage.image_name) }}" alt="Wybierz kategorie">
+                    </a>
                 </div>
                 <div class="job-info" {% if loop.last %} style="border:none" {% endif %}>
                     <h3 class="info-title">
