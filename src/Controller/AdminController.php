@@ -85,8 +85,6 @@ class AdminController extends BaseAdminController
                     $i++;
                 }
             }
-    
-            $em->flush();
 
         } else {
             $exam = $examOptainer->getOne($examLink);
@@ -110,6 +108,8 @@ class AdminController extends BaseAdminController
                 $i++;
             }
         }
+
+        $em->flush();
 
         $session->getFlashBag()->add('notice', 'Dodano '. $i . ' pytań');
         
