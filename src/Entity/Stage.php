@@ -26,9 +26,7 @@ class Stage
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      min = 6,
      *      max = 255,
-     *      minMessage = "Designation must be at least {{ limit }} characters long",
      *      maxMessage = "Designation cannot be longer than {{ limit }} characters"
      * )
      */
@@ -89,9 +87,7 @@ class Stage
      * @Assert\NotBlank()
      * @Assert\Length(
      *      max = 512,
-     *      min = 20,
      *      maxMessage = "Meta description cannot be longer than {{ limit }} characters",
-     *      minMessage = "Meta description must be at least {{ limit }} characters long"
      * )
      */
     private $metaDescription;
