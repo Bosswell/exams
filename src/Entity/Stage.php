@@ -75,8 +75,6 @@ class Stage
      * @ORM\Column(type="string", length=100)
      * @Assert\Length(
      *      max = 100,
-     *      min = 10,
-     *      maxMessage = "Friendly url cannot be longer than {{ limit }} characters",
      *      minMessage = "Friendly url must be at least {{ limit }} characters long"
      * )
      */
