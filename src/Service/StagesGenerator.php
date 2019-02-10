@@ -27,20 +27,20 @@ class StagesGenerator
     */
     public function getAll() : Array
     {
-        if (!$this->cache->has('stages.all')) {
+        // if (!$this->cache->has('stages.all')) {
 
             $sql = '
                 SELECT s.meta_description, s.friendly_url, s.id, s.designation, s.image_name, count(q.qualification_id) as "qualification_quantity",
-                count(DISTINCT(q.qualification_id)) as "stages_quantity" FROM `stage` s LEFT JOIN `stage_qualification` 
-                s_q ON s_q.stage_id = s.id LEFT JOIN `question` q ON q.qualification_id = s_q.qualification_id GROUP BY s_q.stage_id
+                count(DISTINCT(q.qualification_id)) as "stages_quantity" FROM `stage` s JOIN `stage_qualification` 
+                s_q ON s_q.stage_id = s.id JOIN `question` q ON q.qualification_id = s_q.qualification_id AND s.is_active = 1 GROUP BY s_q.stage_id
             ';
             
             $stmt = $this->em->getConnection()->prepare($sql);
             $stmt->execute();
             $stages =  $stmt->fetchAll();
-
+dump($stages);
             $this->cache->set('stages.all', $this->serializer->encode($stages, 'json'));
-        }
+        // }
 
         return $this->serializer->decode($this->cache->get('stages.all'), 'json');
     }

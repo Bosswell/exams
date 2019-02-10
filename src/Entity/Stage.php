@@ -90,15 +90,20 @@ class Stage
      */
     private $metaDescription;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive;
+
     public function __construct()
     {
         $this->qualifications = new ArrayCollection();
     }
 	
 	public function __toString()
-    {
-        return $this->designation;
-    }
+             {
+                 return $this->designation;
+             }
 
     public function getId(): ?int
     {
@@ -212,6 +217,18 @@ class Stage
     public function setMetaDescription(string $metaDescription): self
     {
         $this->metaDescription = $metaDescription;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
 
         return $this;
     }

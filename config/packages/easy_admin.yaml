@@ -42,12 +42,14 @@ easy_admin:
                     - { property: 'metaDescription', type: "textarea", label: 'Opis meta' }
                     - { property: 'qualifications' }
                     - { property: 'imageFile', label: 'Zdjęcie', type: 'vich_image'}
+                    - { property: 'isActive', label: 'Aktywne', type: 'boolean'}
             label: 'Etapy'
             list:
                 title: 'Etapy'
                 fields:
                     - id
                     - { property: 'designation', label: 'Opis' }
+                    - { property: 'isActive', label: 'Aktywne'}
             edit:
                 title: 'Edytuj etap'
                 fields:
