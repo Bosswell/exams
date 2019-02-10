@@ -42,7 +42,6 @@ easy_admin:
                     - { property: 'metaDescription', type: "textarea", label: 'Opis meta' }
                     - { property: 'qualifications' }
                     - { property: 'imageFile', label: 'Zdjęcie', type: 'vich_image'}
-                    - { property: 'isActive', label: 'Aktywne', type: 'boolean'}
             label: 'Etapy'
             list:
                 title: 'Etapy'
