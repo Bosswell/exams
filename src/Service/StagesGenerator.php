@@ -27,7 +27,7 @@ class StagesGenerator
     */
     public function getAll() : Array
     {
-        // if (!$this->cache->has('stages.all')) {
+        if (!$this->cache->has('stages.all')) {
 
             $sql = '
                 SELECT s.meta_description, s.friendly_url, s.id, s.designation, s.image_name, count(q.qualification_id) as "qualification_quantity",
@@ -38,9 +38,9 @@ class StagesGenerator
             $stmt = $this->em->getConnection()->prepare($sql);
             $stmt->execute();
             $stages =  $stmt->fetchAll();
-dump($stages);
+
             $this->cache->set('stages.all', $this->serializer->encode($stages, 'json'));
-        // }
+        }
 
         return $this->serializer->decode($this->cache->get('stages.all'), 'json');
     }
