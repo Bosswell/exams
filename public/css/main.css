@@ -52,6 +52,10 @@
     border-bottom: 1px solid #000;
     padding-bottom: 40px;
 }
+
+.job-container:last-child .job-info {
+    border: none;
+}
   
 .info-text {
     color: grey;
@@ -108,4 +112,21 @@ a:hover {
 
 .active .nav-link {
     color: #FFF !important;
+}
+
+#search-row {
+    margin-bottom: 15px;
+}
+
+#search-group {
+    background: #EEE;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+#search-group h1 {
+    font-weight: 300;
+    margin-bottom: 20px;
 }

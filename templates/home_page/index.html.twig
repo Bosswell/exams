@@ -34,22 +34,33 @@
             </p>
         </section>
         <div id="jobs">
-            {% for stage in stages %}
-            <div class="job-container">
-                <div class="job-img-container">
-                    <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">
-                        <img class="job-img" src="{{ asset('uploads/stage/'~stage.image_name) }}" alt="Wybierz kategorie">
-                    </a>
+            <div class="row" id="search-row">
+                <div class="input-group col-md-4">
+                    <input class="form-control py-2" type="search" placeholder="Wyszukaj" id="search">
                 </div>
-                <div class="job-info" {% if loop.last %} style="border:none" {% endif %}>
-                    <h3 class="info-title">
-                    <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">{{ stage.designation }}</a>
-                </h3>
-                    <div class="info-text">{{ stage.stages_quantity }} kwalifikacje</div>
-                    <div class="info-text">{{ stage.qualification_quantity }} pytań w bazie</div>
-                </div>
-                <div style="clear:both"></div>
             </div>
+
+            <div id="search-group">
+                <h1>Wyniki wyszukiwania<h1>
+                <div id="search-container"></div>
+            </div>
+
+            {% for stage in stages %}
+                <div class="job-container">
+                    <div class="job-img-container">
+                        <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">
+                            <img class="job-img" src="{{ asset('uploads/stage/'~stage.image_name) }}" alt="Wybierz kategorie">
+                        </a>
+                    </div>
+                    <div class="job-info">
+                        <h3 class="info-title">
+                        <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">{{ stage.designation }}</a>
+                    </h3>
+                        <div class="info-text">{{ stage.stages_quantity }} kwalifikacje</div>
+                        <div class="info-text">{{ stage.qualification_quantity }} pytań w bazie</div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
             {% endfor %}
         </div>
     </article>
@@ -57,5 +68,13 @@
     {% include 'home_page/deadlines.html.twig' %}
 
     {% include 'home_page/contact.html.twig' %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    
+    <script src="{{ asset('js/ajax_search.js') }}"></script>
 
 {% endblock %}
