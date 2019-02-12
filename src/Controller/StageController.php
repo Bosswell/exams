@@ -5,7 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Stage;
+use App\Service\StagesGenerator;
 
 class StageController extends AbstractController
 {
@@ -22,5 +24,16 @@ class StageController extends AbstractController
             'qualifications' =>  $qualifications,
             'stage' =>  $stage
         ]);
+    }
+
+    /**
+     * @Route("/stage/find", name="stage_finder")
+     */
+    public function search(Request $request, StagesGenerator $stagesGenerator)
+    {   
+        $query = $request->get('query');
+        $stages = $stagesGenerator->find($query, 5);
+
+        return new JsonResponse($stages);
     }
 }

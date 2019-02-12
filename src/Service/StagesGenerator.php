@@ -44,4 +44,23 @@ class StagesGenerator
 
         return $this->serializer->decode($this->cache->get('stages.all'), 'json');
     }
+
+    public function find(string $query, int $limit) : ?Array
+    {
+        $query = addslashes($query);
+     
+        $sql = '
+                SELECT s.meta_description, s.friendly_url, s.id, s.designation, s.image_name, count(q.qualification_id) as "qualification_quantity",
+                count(DISTINCT(q.qualification_id)) as "stages_quantity" FROM `stage` s JOIN `stage_qualification` 
+                s_q ON s_q.stage_id = s.id 
+                JOIN `question` q ON q.qualification_id = s_q.qualification_id AND s.is_active = 1 AND s.designation LIKE "%'. $query .'%"
+                GROUP BY s_q.stage_id LIMIT '. $limit .'
+            ';
+            
+        $stmt = $this->em->getConnection()->prepare($sql);
+        $stmt->execute();
+        $stages =  $stmt->fetchAll();
+
+        return $stages;
+    }
 }

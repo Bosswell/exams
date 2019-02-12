@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %} 
 
 {% block stylesheets %} 
+
   {{ parent() }}
+
+  <link rel="stylesheet" href="{{ asset('css/spinner.css') }}"> 
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
   <link rel="stylesheet" href="{{ asset('css/deadlines.css') }}"> 
+
 {% endblock %} 
 
 {% block body %}
@@ -34,9 +38,30 @@
             </p>
         </section>
         <div id="jobs">
+
             <div class="row" id="search-row">
-                <div class="input-group col-md-4">
-                    <input class="form-control py-2" type="search" placeholder="Wyszukaj" id="search">
+                <div class="form-group col-md-4">
+                    <label for="search" id="search-label">Wyszukaj zawód</label>
+                    <input class="form-control py-2" type="search" placeholder="np. Fototechnik" id="search" autocomplete="off">
+                </div>
+                <div class"col-md-2">
+                    <div class="lds-spinner">
+                        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12" id="not-found-message">
+                    <div class="alert alert-danger">
+                        Brak wyników wyszukiwania
+                    </div>
+                </div>
+
+                <div class="col-12" id="not-enough-letters-message">
+                    <div class="alert alert-danger">
+                        Musisz wpisać co najmniej 3 znaki
+                    </div>
                 </div>
             </div>
 

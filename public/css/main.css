@@ -115,7 +115,7 @@ a:hover {
 }
 
 #search-row {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 #search-group {
@@ -129,4 +129,23 @@ a:hover {
 #search-group h1 {
     font-weight: 300;
     margin-bottom: 20px;
+}
+
+#search-row .form-control:focus {
+    border-color: inherit;
+    box-shadow: none;
+}
+
+#search-row .lds-spinner {
+    display: none;
+}
+
+#search-row #search-label {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+#not-found-message,
+#not-enough-letters-message {
+    display: none;
 }
