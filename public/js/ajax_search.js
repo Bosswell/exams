@@ -73,6 +73,7 @@ $(function () {
                 })
             } else {
                 $spinner.hide();
+                $notFoundMessage.hide();
                 $notEnoughLettersMessage.show();
             }
         }, 700);
