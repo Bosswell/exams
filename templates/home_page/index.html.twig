@@ -4,7 +4,7 @@
 
   {{ parent() }}
 
-  <link rel="stylesheet" href="{{ asset('css/spinner.css') }}"> 
+  <link rel="stylesheet" href="{{ asset('css/ellipsis.css') }}"> 
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
   <link rel="stylesheet" href="{{ asset('css/deadlines.css') }}"> 
 
@@ -37,17 +37,17 @@
                 <br/> więc jeśli nie ma wojego kierunku, pojawi się on w przyszłości!
             </p>
         </section>
-        <div id="jobs">
+        <div class="jobs">
 
             <div class="row" id="search-row">
-                <div class="form-group col-md-4">
-                    <label for="search" id="search-label">Wyszukaj zawód</label>
-                    <input class="form-control py-2" type="search" placeholder="np. Fototechnik" id="search" autocomplete="off">
+                <div class="col-md-12">
+                    <input class="form-control py-2" type="search" placeholder="wpisz nazwę zawodu" id="search" autocomplete="off">
                 </div>
-                <div class"col-md-2">
-                    <div class="lds-spinner">
-                        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-                    </div>
+            </div>
+
+            <div id="ellipsis-container">
+                <div class="lds-ellipsis">
+                    <div></div><div></div><div></div><div></div>
                 </div>
             </div>
 
@@ -70,6 +70,16 @@
                 <div id="search-container"></div>
             </div>
 
+        </div>
+        
+    </article>
+
+    <article class="container">
+        <section>
+            <h1 class="title">lista wszystkich dostępnych zawodów</h1>
+        </section>
+        <div class="jobs">
+
             {% for stage in stages %}
                 <div class="job-container">
                     <div class="job-img-container">
@@ -87,7 +97,9 @@
                     <div style="clear:both"></div>
                 </div>
             {% endfor %}
+
         </div>
+        
     </article>
 
     {% include 'home_page/deadlines.html.twig' %}

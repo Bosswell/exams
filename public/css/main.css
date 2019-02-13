@@ -114,21 +114,14 @@ a:hover {
     color: #FFF !important;
 }
 
-#search-row {
-    margin-bottom: 10px;
-}
-
 #search-group {
-    background: #EEE;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 15px;
     display: none;
 }
 
 #search-group h1 {
     font-weight: 300;
     margin-bottom: 20px;
+    font-size: 35px;
 }
 
 #search-row .form-control:focus {
@@ -136,7 +129,11 @@ a:hover {
     box-shadow: none;
 }
 
-#search-row .lds-spinner {
+.jobs #ellipsis-container {
+    min-height: 40px;
+}
+
+.jobs #ellipsis-container .lds-ellipsis {
     display: none;
 }
 
@@ -148,4 +145,12 @@ a:hover {
 #not-found-message,
 #not-enough-letters-message {
     display: none;
+}
+
+#egzaminy {
+    min-height: 420px;
+}
+
+.jobs {
+    margin-top: 20px;
 }
