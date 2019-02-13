@@ -6,23 +6,18 @@ $(function () {
     let $notEnoughLettersMessage = $('#not-enough-letters-message');
     let timer = null;
     let query = '';
-    let $spinner = $('#search-row .lds-spinner');
-    let isMobile = null;
-
-    detectMobile();
-    $(window).resize(detectMobile);
+    let $ellipsis = $('.jobs #ellipsis-container .lds-ellipsis');
 
     $searchInput.on('keyup', function () {
         clearTimeout(timer);
-        if (!isMobile)
-            $spinner.show();
+            $ellipsis.show();
 
         timer = setTimeout( () => {
             query = $(this).val();
 
             if (query.length === 0) {
                 $searchGroup.hide();
-                $spinner.hide();
+                $ellipsis.hide();
 
                 setTimeout( () => {
                     $notEnoughLettersMessage.hide();
@@ -64,15 +59,18 @@ $(function () {
                             $notFoundMessage.show();
                             $searchGroup.hide();
                         } else {
+                            $notFoundMessage.hide();
+                            $notEnoughLettersMessage.hide();
+
                             $searchContainer.html(tmpHTML);
                             $searchGroup.fadeIn();
                         }
 
-                        $spinner.hide();
+                        $ellipsis.hide();
                     }
                 })
             } else {
-                $spinner.hide();
+                $ellipsis.hide();
                 $notFoundMessage.hide();
                 $notEnoughLettersMessage.show();
             }
