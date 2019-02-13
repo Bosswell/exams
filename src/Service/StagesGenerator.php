@@ -22,10 +22,7 @@ class StagesGenerator
         $this->em = $em;
     }
 
-    /*
-    * Pull out all with the number of all questions
-    */
-    public function getAll() : Array
+    public function generate()
     {
         if (!$this->cache->has('stages.all')) {
 
@@ -41,8 +38,36 @@ class StagesGenerator
 
             $this->cache->set('stages.all', $this->serializer->encode($stages, 'json'));
         }
+    }
 
-        return $this->serializer->decode($this->cache->get('stages.all'), 'json');
+    public function getTotalCount() : int
+    {
+        if ($this->cache->has('stages.all')) {
+            if (!$this->cache->has('stages.total_count')) {
+                $totalCount = count($this->serializer->decode($this->cache->get('stages.all'), 'json'));
+    
+                $this->cache->set('stages.total_count', $totalCount);
+            }
+    
+            return $this->cache->get('stages.total_count');
+
+        } else {
+            $this->generate();
+            $this->getTotalCount();
+        }
+    }
+
+    public function getRange(int $from, int $limit) : ?Array
+    {
+        if ($this->cache->has('stages.all')) {
+            $stages = $this->serializer->decode($this->cache->get('stages.all'), 'json');
+
+            return array_slice($stages, $from, $limit);
+            
+        } else {
+            $this->generate();
+            $this->getRange();
+        }
     }
 
     public function find(string $query, int $limit) : ?Array

@@ -2,7 +2,7 @@
     <h1 class="footer-block-title">Egzaminy</h1>
     <nav>
         <ul id="exam-list">
-            {% for stage in stagesGenerator.getAll %}
+            {% for stage in stagesGenerator.getRange(0,10) %}
                 <li>
                     <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">{{ stage.designation }}</a>
                 </li>
@@ -19,7 +19,7 @@
         </div>
 
         <ul id="exam-list" class="expand-footer">
-            {% for stage in stagesGenerator.getAll %}
+            {% for stage in stagesGenerator.getRange(0,10) %}
                 <li>
                     <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">{{ stage.designation }}</a>
                 </li>

@@ -36,4 +36,18 @@ class StageController extends AbstractController
 
         return new JsonResponse($stages);
     }
+
+    /**
+     * @Route("/stage/getLimitedRange", name="get_limited_range")
+     */
+    public function getLimitedRange(Request $request, StagesGenerator $stagesGenerator)
+    {   
+        // Zwalidować
+        $from = $request->get('from');
+        $limit = $request->get('limit');
+
+        $stages = $stagesGenerator->getLimitedRange($from, $limit);
+
+        return new JsonResponse($stages);
+    }
 }
