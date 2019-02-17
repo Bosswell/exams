@@ -18,11 +18,34 @@ class StagesGenerator
     {
         $this->serializer = new Serializer(array(), array(new JsonEncoder()));
         $this->cache = new FilesystemCache();
-
         $this->em = $em;
+
+        $this->generate();
     }
 
-    public function generate()
+    public function getTotalCount() : int
+    {
+        if ($this->cache->has('stages.all')) {
+            if (!$this->cache->has('stages.total_count')) {
+                $totalCount = count($this->serializer->decode($this->cache->get('stages.all'), 'json'));
+    
+                $this->cache->set('stages.total_count', $totalCount);
+            }
+        }
+
+        return $this->cache->get('stages.total_count');
+    }
+
+    public function getRange(int $from, int $limit) : ?Array
+    {
+        if ($this->cache->has('stages.all')) {
+            $stages = $this->serializer->decode($this->cache->get('stages.all'), 'json');
+        }
+
+        return array_slice($stages, $from, $limit);
+    }
+
+    private function generate()
     {
         if (!$this->cache->has('stages.all')) {
 
@@ -38,54 +61,5 @@ class StagesGenerator
 
             $this->cache->set('stages.all', $this->serializer->encode($stages, 'json'));
         }
-    }
-
-    public function getTotalCount() : int
-    {
-        if ($this->cache->has('stages.all')) {
-            if (!$this->cache->has('stages.total_count')) {
-                $totalCount = count($this->serializer->decode($this->cache->get('stages.all'), 'json'));
-    
-                $this->cache->set('stages.total_count', $totalCount);
-            }
-    
-            return $this->cache->get('stages.total_count');
-
-        } else {
-            $this->generate();
-            $this->getTotalCount();
-        }
-    }
-
-    public function getRange(int $from, int $limit) : ?Array
-    {
-        if ($this->cache->has('stages.all')) {
-            $stages = $this->serializer->decode($this->cache->get('stages.all'), 'json');
-
-            return array_slice($stages, $from, $limit);
-            
-        } else {
-            $this->generate();
-            $this->getRange();
-        }
-    }
-
-    public function find(string $query, int $limit) : ?Array
-    {
-        $query = addslashes($query);
-     
-        $sql = '
-                SELECT s.meta_description, s.friendly_url, s.id, s.designation, s.image_name, count(q.qualification_id) as "qualification_quantity",
-                count(DISTINCT(q.qualification_id)) as "stages_quantity" FROM `stage` s JOIN `stage_qualification` 
-                s_q ON s_q.stage_id = s.id 
-                JOIN `question` q ON q.qualification_id = s_q.qualification_id AND s.is_active = 1 AND s.designation LIKE "%'. $query .'%"
-                GROUP BY s_q.stage_id LIMIT '. $limit .'
-            ';
-            
-        $stmt = $this->em->getConnection()->prepare($sql);
-        $stmt->execute();
-        $stages =  $stmt->fetchAll();
-
-        return $stages;
     }
 }

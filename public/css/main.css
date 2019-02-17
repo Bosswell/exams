@@ -129,11 +129,11 @@ a:hover {
     box-shadow: none;
 }
 
-.jobs #ellipsis-container {
+#ellipsis-container {
     min-height: 40px;
 }
 
-.jobs #ellipsis-container .lds-ellipsis {
+.lds-ellipsis {
     display: none;
 }
 
@@ -153,4 +153,28 @@ a:hover {
 
 .jobs {
     margin-top: 20px;
+}
+
+.page-link {
+    padding: 12px
+}
+
+#stages-loading-spinner {
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+}
+
+#stages-loading-spinner .lds-spinner {
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
 }

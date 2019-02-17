@@ -25,29 +25,4 @@ class StageController extends AbstractController
             'stage' =>  $stage
         ]);
     }
-
-    /**
-     * @Route("/stage/find", name="stage_finder")
-     */
-    public function search(Request $request, StagesGenerator $stagesGenerator)
-    {   
-        $query = $request->get('query');
-        $stages = $stagesGenerator->find($query, 5);
-
-        return new JsonResponse($stages);
-    }
-
-    /**
-     * @Route("/stage/getLimitedRange", name="get_limited_range")
-     */
-    public function getLimitedRange(Request $request, StagesGenerator $stagesGenerator)
-    {   
-        // Zwalidować
-        $from = $request->get('from');
-        $limit = $request->get('limit');
-
-        $stages = $stagesGenerator->getLimitedRange($from, $limit);
-
-        return new JsonResponse($stages);
-    }
 }

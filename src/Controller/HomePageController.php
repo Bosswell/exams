@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\StagesGenerator;
+use App\Helper\Pagination;
 
 
 class HomePageController extends AbstractController
@@ -15,25 +16,23 @@ class HomePageController extends AbstractController
      */
     public function index(StagesGenerator $stagesGenerator, Request $request)
     {
-        $limit = 5;
-
-        if (!empty($request->get('page'))) {
-            $page = $request->get('page');
-
-        } else {
-            $page = 1;
-        }
-        $from = $page * $limit - $limit;
-        $to = $from + $limit;
-
-        $stagesGenerator->generate();
         $totalStagesCount = $stagesGenerator->getTotalCount();
-        $stages = $stagesGenerator->getRange($from, $to);
+
+        if (empty($request->get('page')) || !ctype_digit($request->get('page')))
+            $currentPage = 1;
+        else 
+            $currentPage = $request->get('page');
+
+        $pagination = new Pagination($currentPage, $totalStagesCount, 3, 3);
+        $stages = $stagesGenerator->getRange($pagination->getLimitOffset(), 3);
+        
 
         return $this->render('home_page/index.html.twig', [
-            'stages'        =>  $stages,
-            'pages'         =>  ceil($totalStagesCount / $limit),
-            'current_page'  =>  $page
+            'stages'              =>  $stages,
+            'allPages'            =>  $pagination->getPagesQuantity(),
+            'currentPage'         =>  $pagination->getCurrentPage(),
+            'totalStagesCount'    =>  $totalStagesCount,
+            'range'               =>  $pagination->getRange()
         ]);
     }
 }
