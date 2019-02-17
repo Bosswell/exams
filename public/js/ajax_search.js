@@ -29,7 +29,7 @@ $(function () {
 
                 $.ajax({
                     dataType: "json",
-                    url: '/stage/find',
+                    url: '/stage/api/find',
                     data: {
                         query: query
                     },
@@ -46,7 +46,7 @@ $(function () {
                                     '</div>' +
                                     '<div class="job-info">' +
                                         '<h3 class="info-title">' +
-                                            '<a href="/egzaminy/'+ element.friendly_url +'-'+ element.id +'">'+ element.designation + '</a>' +
+                                            '<a href="/egzaminy/'+ element.id +'-'+ element.friendly_url +'">'+ element.designation + '</a>' +
                                         '</h3>' +
                                         '<div class="info-text">'+ element.stages_quantity +' kwalifikacje</div>' +
                                         '<div class="info-text">'+ element.qualification_quantity +' pytań w bazie</div>' +
@@ -71,18 +71,10 @@ $(function () {
                 })
             } else {
                 $ellipsis.hide();
+                $searchGroup.hide();
                 $notFoundMessage.hide();
                 $notEnoughLettersMessage.show();
             }
         }, 700);
     });
-
-    function detectMobile() {
-        if ($(window).width() <= 768) {
-            isMobile = true;
-        } else {
-            isMobile = false;
-        }
-    }
-
 })
