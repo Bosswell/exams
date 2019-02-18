@@ -17,6 +17,10 @@
     #mobile-block-exams {
         display: block;
     }
+
+    #footer {
+        margin-top: 80px;
+    }
 }
 
 /* DESKTOP FOOTER */

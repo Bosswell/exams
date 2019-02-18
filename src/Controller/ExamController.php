@@ -15,9 +15,9 @@ use App\Service\QualificationGenerator;
 class ExamController extends AbstractController
 {
     /**
-     * @Route("/egzamin/generator/{friendly_stage_url}", name="redirect_exam")
+     * @Route("/egzamin-zawodowy/generator/{stage_id}-{friendly_stage_url}", name="redirect_exam")
      */
-    public function selectQualificationsFormRedirection(Request $request, QualificationGenerator $qualificationGenerator, $friendly_stage_url)
+    public function selectQualificationsFormRedirection(Request $request, QualificationGenerator $qualificationGenerator, $friendly_stage_url, $stage_id)
     {
         $qualification_id = $request->get('qualification_id');
         $question_quantity = $request->get('question_quantity');
@@ -32,14 +32,15 @@ class ExamController extends AbstractController
             'qualification_id'   =>  $qualification_id,
             'question_quantity'  =>  $question_quantity,
             'friendly_stage_url' =>  $friendly_stage_url,
-            'friendly_qualification_url' => $friendly_qualification_url
+            'friendly_qualification_url' => $friendly_qualification_url,
+            'stage_id'  =>  $stage_id
         ], 302);
     }
 
     /**
-     * @Route("/egzamin/{question_quantity}/{friendly_stage_url}/{qualification_id}-{friendly_qualification_url}", name="generate_exam")
+     * @Route("/egzamin-zawodowy/{question_quantity}/{stage_id}-{friendly_stage_url}/{qualification_id}-{friendly_qualification_url}", name="generate_exam")
      */
-    public function generateExam(Request $request, $qualification_id, $question_quantity, $friendly_qualification_url, $friendly_stage_url)
+    public function generateExam(Request $request, $qualification_id, $stage_id, $question_quantity, $friendly_qualification_url, $friendly_stage_url)
     {
         if (empty($qualification_id) || empty($question_quantity)) {
             return $this->redirectToRoute('homepage', null, 302);
@@ -62,26 +63,26 @@ class ExamController extends AbstractController
 
         $request->getSession()->set('exam', $exam);
         $request->getSession()->set('qualification_id', $qualification_id);
-        $request->getSession()->set('friendly_qualification_url', $friendly_qualification_url);
         $request->getSession()->set('qualification_designation', $qualification->getDesignation());
         $request->getSession()->set('qualification_meta_desc', $qualification->getMetaDescription());
+        $request->getSession()->set('friendly_stage_url', $friendly_stage_url);
+        $request->getSession()->set('friendly_qualification_url', $qualification->getFriendlyUrl());
         $stage_name = ucfirst(str_replace('-', ' ', $friendly_stage_url));
         $request->getSession()->set('stage_name', $stage_name);
-
-        $current_stage_id = $request->getSession()->get('current_stage_id');
+        $request->getSession()->set('stage_id', $stage_id);
 
         return $this->render('exam/show.html.twig', [
             'questions'  => $questions,
             'qualification'    =>  $qualification,
             'question_quantity'    =>  $question_quantity,
             'stage_name'    =>  $stage_name,
-            'current_stage_id' => $current_stage_id,
+            'stage_id' => $stage_id,
             'friendly_stage_url' => $friendly_stage_url
         ]);
     }
 
     /**
-     * @Route("/egzamin/sprawdz", name="check_exam")
+     * @Route("/egzamin-zawodowy/{friendly_stage}/podsumowanie", name="check_exam")
      */
     public function checkExam(Request $request)
     {
@@ -91,7 +92,7 @@ class ExamController extends AbstractController
             return $this->redirectToRoute('home_page');
         }
 
-        $current_stage_id = $request->getSession()->get('current_stage_id');
+        $stage_id = $request->getSession()->get('stage_id');
         $friendly_qualification_url = $request->getSession()->get('friendly_qualification_url');
         $friendly_stage_url = $request->getSession()->get('friendly_stage_url');
         $qualification_id = $request->getSession()->get('qualification_id');
@@ -110,7 +111,7 @@ class ExamController extends AbstractController
             'points'            => $exam->getPoints(),
             'percent'           => $exam->getPercent(),
             'question_quantity' => $exam->getQuestionQuantity(),
-            'current_stage_id'  => $current_stage_id,
+            'stage_id'  => $stage_id,
             'friendly_qualification_url' => $friendly_qualification_url,
             'friendly_stage_url' => $friendly_stage_url,
             'qualification_id' => $qualification_id,
