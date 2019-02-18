@@ -79,10 +79,7 @@ $(function() {
         current_checkbox.attr('is-active', 'true');
 
         let value = current_checkbox.attr('data-value');
-
-        checkbox_input.filter(function() {
-            return this.value == value;
-        }).prop("selected", true);
+        checkbox_input.val(value);
     });
 
     /**

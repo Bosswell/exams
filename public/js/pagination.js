@@ -26,13 +26,13 @@ $(function () {
                     tmpExamsListHTML += 
                     '<div class="job-container">' +
                         '<div class="job-img-container">' +
-                            '<a href="/egzaminy/'+ stage.id +'-'+ stage.friendly_url +'">' +
+                            '<a href="/'+ stage.friendly_url +'/wybierz-kwalifikacje/'+ stage.id +'">' +
                                 '<img class="job-img" src="uploads/stage/'+ stage.image_name +'" alt="Wybierz kategorie">' +
                             '</a>' +
                         '</div>' +
                         '<div class="job-info">' +
                             '<h3 class="info-title">' +
-                            '<a href="/egzaminy/'+ stage.id +'-'+ stage.friendly_url +'">'+ stage.designation +'</a>' +
+                            '<a href="/'+ stage.friendly_url +'/wybierz-kwalifikacje/'+ stage.id +'">'+ stage.designation +'</a>' +
                         '</h3>' +
                             '<div class="info-text">'+ stage.stages_quantity +' kwalifikacje</div>' +
                             '<div class="info-text">'+ stage.qualification_quantity +' pytań w bazie</div>' +

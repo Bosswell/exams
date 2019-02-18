@@ -24,16 +24,13 @@ $(function() {
         }
       });
 
-      let checkbox_input = checkbox_container.find('select option');
+      let checkbox_input = checkbox_container.find('.user-input');
       current_checkbox.attr('data-is-choosen', 'true');
       current_checkbox.addClass('checkbox-active', 300);
 
       let value = current_checkbox.attr('data-value');
 
-      checkbox_input.filter(function() {
-          return this.value == value;
-      }).prop("selected", true);
-
+      checkbox_input.val(value);
       checkbox_input.parent().attr('is-filled', 'true');
     }
   });
@@ -43,13 +40,8 @@ $(function() {
     let errors = [];
     let isOk = true;
 
-    if (form_qualification_id.attr('is-filled') != 'true') {
-      errors.push('Nie wybrano kwalifikacji.');
-      isOk = false;
-    }
-
-    if (form_question_quantity.attr('is-filled') != 'true') {
-      errors.push('Nie wybrano ilości pytań.');
+    if (form_qualification_id.val() === '' || form_question_quantity.attr('is-filled') === '') {
+      errors.push('Nie wybrano kwalifikacji lub ilości pytań.');
       isOk = false;
     }
 

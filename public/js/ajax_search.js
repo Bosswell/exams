@@ -40,13 +40,13 @@ $(function () {
                             tmpHTML += 
                                 '<div class="job-container">' +
                                     '<div class="job-img-container">' +
-                                        '<a href="/egzaminy/'+ element.friendly_url +'-'+ element.id +'">' +
+                                        '<a href="/'+ element.friendly_url +'/wybierz-kwalifikacje/'+ element.id +'">' +
                                             '<img class="job-img" src="/uploads/stage/'+ element.image_name +'" alt="Wybierz kategorie">' +
                                         '</a>' +
                                     '</div>' +
                                     '<div class="job-info">' +
                                         '<h3 class="info-title">' +
-                                            '<a href="/egzaminy/'+ element.id +'-'+ element.friendly_url +'">'+ element.designation + '</a>' +
+                                            '<a href="/'+ element.friendly_url +'/wybierz-kwalifikacje/'+ element.id +'">'+ element.designation + '</a>' +
                                         '</h3>' +
                                         '<div class="info-text">'+ element.stages_quantity +' kwalifikacje</div>' +
                                         '<div class="info-text">'+ element.qualification_quantity +' pytań w bazie</div>' +

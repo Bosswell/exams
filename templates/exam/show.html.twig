@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ stage_name }} - Kwalifikacja {{ qualification.designation }}{% endblock %} 
-{% block metaDescription %}{{ qualification.metaDescription }}{% endblock %} 
+{% block metaDescription %}Wylosuj {{ question_quantity }} pytań. {{ qualification.metaDescription }}{% endblock %} 
 
 {% block stylesheets %} 
     {{ parent() }}
@@ -18,7 +18,7 @@
     <nav aria-label="breadcrumb" id="breadcrumb-nav">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ path('home_page') }}">Strona główna</a></li>
-            <li class="breadcrumb-item"><a href="{{ path('stage', {'id': current_stage_id, 'friendly_url': friendly_stage_url}) }}">{{ stage_name }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('stage', {'id': stage_id, 'friendly_url': friendly_stage_url}) }}">{{ stage_name }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">Kwalifikacja {{ qualification.designation }}</li>
         </ol>
     </nav>
@@ -28,8 +28,9 @@
         <h1 class="qualification-title left-white-space">Kwalifikacja {{ qualification.designation }} - {{ qualification.description }}</h1>
     </section>
 
-    <form id="exam-form" method="POST" action="{{ path('check_exam') }}">
+    <form id="exam-form" method="POST" action="{{ path('check_exam', {'friendly_stage': friendly_stage_url}) }}">
         <div class="left-white-space">
+            <div style="margin-top: 5px">Kliknięcie spowoduje pokazanie pytania.</div>
             <div id="questions-panel">
                 {% for question in questions %} 
                     {% if loop.index0 % 2 == 0 %}
@@ -53,35 +54,30 @@
                         <p class="text-faded text-before-devider">pytanie {{ loop.index }} z {{ question_quantity }}</p>
                         <div class="devider exam-devider"></div>
 
-                        <h1 style="font-size: 18px;">{{ loop.index }}. <span class="query">{{ question.query | raw }}</span></h1>
+                        <h2 style="font-size: 18px;">{{ loop.index }}. <span class="query">{{ question.query|raw }}</span></h2>
                         
                         <div class="row">
                             <div class="answers-group col-lg-{% if question.imageName %}6{% else %}12{% endif %}" data-question-number="{{ loop.index0 }}">
-                                <select class="user_answer" name="answers[{{ loop.index0 }}]" hidden>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
+                                <input type="hidden" class="user_answer" name="answers[{{ loop.index0 }}]">
 
                                 <div class="column question-panel-margin">
                                     <div class="checkbox-group answer" data-value="1">
                                         <div class="checkbox"></div>
-                                        <div class="checkbox-label">{{ question.answerA | raw }}</div>
+                                        <div class="checkbox-label">{{ question.answerA|raw }}</div>
                                     </div>
                                     <div class="checkbox-group answer" data-value="2">
                                         <div class="checkbox"></div>
-                                        <div class="checkbox-label">{{ question.answerB | raw }}</div>
+                                        <div class="checkbox-label">{{ question.answerB|raw }}</div>
                                     </div>
                                 </div>
                                 <div class="column">
                                     <div class="checkbox-group answer" data-value="3">
                                         <div class="checkbox"></div>
-                                        <div class="checkbox-label">{{ question.answerC | raw }}</div>
+                                        <div class="checkbox-label">{{ question.answerC|raw }}</div>
                                     </div>
                                     <div class="checkbox-group answer" data-value="4">
                                         <div class="checkbox"></div>
-                                        <div class="checkbox-label">{{ question.answerD | raw }}</div>
+                                        <div class="checkbox-label">{{ question.answerD|raw }}</div>
                                     </div>
                                 </div>
                             </div>

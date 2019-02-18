@@ -17,7 +17,7 @@
     <nav aria-label="breadcrumb" id="breadcrumb-nav">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ path('home_page') }}">Strona główna</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ stage.designation }}</li>
+            <li class="breadcrumb-item active">{{ stage.designation }}</li>
         </ol>
     </nav>
     {# ------ End breadcrumb -------- #}
@@ -26,30 +26,25 @@
         <h1 class="left-white-space qualification-title">{{ stage.designation }}</h1>
     </section>
     
-    <form id="qualification-form" method="GET" action="{{ path('redirect_exam', {'friendly_stage_url': stage.friendlyUrl}) }}">
+    <form id="qualification-form" method="GET" action="{{ path('redirect_exam', {'stage_id': stage.id, 'friendly_stage_url': stage.friendlyUrl}) }}">
         <section class="qualification-choose-stage-container">
             <h4 class="text-faded under-title left-white-space">wybierz swoją kwalifikacje</h4>
             <article id="qualifications" class="left-white-space">
 
-                <select name="qualification_id" id="qualification-id" hidden>
-                    {% for qualification in qualifications %}
-                        <option value="{{ qualification.id }}">Kwalifikacja {{ qualification.designation }}</option>
-                    {% endfor %}
-                </select>
+                <input name="qualification_id" id="qualification-id" class="user-input" type="hidden">
 
                 {% for qualification in qualifications %}
                     {# Generate hidden links for google bot #}
                     <div hidden>
-                        <a href="{{ path('generate_exam', {'question_quantity': 5, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}"></a>
-                        <a href="{{ path('generate_exam', {'question_quantity': 10, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}"></a>
-                        <a href="{{ path('generate_exam', {'question_quantity': 20, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}"></a>
-                        <a href="{{ path('generate_exam', {'question_quantity': 40, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}"></a>
+                        <a href="{{ path('generate_exam', {'stage_id': stage.id, 'question_quantity': 5, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}"></a>
+                        <a href="{{ path('generate_exam', {'stage_id': stage.id, 'question_quantity': 10, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}"></a>
+                        <a href="{{ path('generate_exam', {'stage_id': stage.id, 'question_quantity': 20, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}"></a>
+                        <a href="{{ path('generate_exam', {'stage_id': stage.id, 'question_quantity': 40, 'friendly_stage_url': stage.friendlyUrl, 'qualification_id': qualification.id, 'friendly_qualification_url': qualification.friendlyUrl}) }}"></a>
                     </div>
 
                     <div class="checkbox-group qualifcation" data-value="{{ qualification.id }}">
                         <div class="checkbox"></div>
                         <div class="checkbox-label">Kwalifikacja {{ qualification.designation }}</div>
-                        <p hidden>{{ qualification.designation }}</p>
                     </div>
                 {% endfor %}
                 <div class="floating-cleaner"></div>
@@ -61,12 +56,7 @@
             <h4 class="text-faded under-title">oraz ilość pytań</h4>
             <article id="questions-quantity">
 
-                <select name="question_quantity" id="question-quantity" hidden>
-                    <option value="5">5 pytań</option>
-                    <option value="10">10 pytań</option>
-                    <option value="20">20 pytań</option>
-                    <option value="40">40 pytań</option>
-                </select>
+                <input name="question_quantity" id="question-quantity" class="user-input" type="hidden">
 
                 <div class="checkbox-group" data-value="5">
                     <div class="checkbox"></div>
