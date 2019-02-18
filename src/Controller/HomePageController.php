@@ -23,8 +23,8 @@ class HomePageController extends AbstractController
         else 
             $currentPage = $request->get('page');
 
-        $pagination = new Pagination($currentPage, $totalStagesCount, 3, 3);
-        $stages = $stagesGenerator->getRange($pagination->getLimitOffset(), 3);
+        $pagination = new Pagination($currentPage, $totalStagesCount, 3, 12);
+        $stages = $stagesGenerator->getRange($pagination->getLimitOffset(), 12);
         
 
         return $this->render('home_page/index.html.twig', [

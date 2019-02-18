@@ -14,7 +14,7 @@ $(function () {
             data: {
                 page: pageNumber,
                 paginationLimit: 3,
-                itemsLimit: 3
+                itemsLimit: 12
             },
             success: function (jsonResponse) {
                 let tmpPaginationHTML = '';
