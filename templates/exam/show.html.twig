@@ -54,7 +54,7 @@
                         <p class="text-faded text-before-devider">pytanie {{ loop.index }} z {{ question_quantity }}</p>
                         <div class="devider exam-devider"></div>
 
-                        <h2 style="font-size: 18px;">{{ loop.index }}. <span class="query">{{ question.query|raw|e('html')|e('js') }}</span></h2>
+                        <h2 style="font-size: 18px;">{{ loop.index }}. <span class="query">{{ question.query|e('html')|raw }}</span></h2>
                         
                         <div class="row">
                             <div class="answers-group col-lg-{% if question.imageName %}6{% else %}12{% endif %}" data-question-number="{{ loop.index0 }}">
@@ -63,21 +63,21 @@
                                 <div class="column question-panel-margin">
                                     <div class="checkbox-group answer" data-value="1">
                                         <div class="checkbox"></div>
-                                        <div class="checkbox-label">{{ question.answerA|raw|e('html')|e('js') }}</div>
+                                        <div class="checkbox-label">{{ question.answerA|e('html')|raw }}</div>
                                     </div>
                                     <div class="checkbox-group answer" data-value="2">
                                         <div class="checkbox"></div>
-                                        <div class="checkbox-label">{{ question.answerB|raw|e('html')|e('js') }}</div>
+                                        <div class="checkbox-label">{{ question.answerB|e('html')|raw }}</div>
                                     </div>
                                 </div>
                                 <div class="column">
                                     <div class="checkbox-group answer" data-value="3">
                                         <div class="checkbox"></div>
-                                        <div class="checkbox-label">{{ question.answerC|raw|e('html')|e('js') }}</div>
+                                        <div class="checkbox-label">{{ question.answerC|e('html')|raw }}</div>
                                     </div>
                                     <div class="checkbox-group answer" data-value="4">
                                         <div class="checkbox"></div>
-                                        <div class="checkbox-label">{{ question.answerD|raw|e('html')|e('js') }}</div>
+                                        <div class="checkbox-label">{{ question.answerD|e('html')|raw }}</div>
                                     </div>
                                 </div>
                             </div>
