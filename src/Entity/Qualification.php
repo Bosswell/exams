@@ -62,10 +62,10 @@ class Qualification
     private $metaDescription;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=300)
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      max = 100,
+     *      max = 300,
      *      min = 5,
      *      maxMessage = "Friendly url cannot be longer than {{ limit }} characters",
      *      minMessage = "Friendly url must be at least {{ limit }} characters long"
