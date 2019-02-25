@@ -14,10 +14,17 @@
 {% block body %}
 
     {# ------ Breadcrumb -------- #}
-    <nav aria-label="breadcrumb" id="breadcrumb-nav">
+    <nav id="breadcrumb-nav">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ path('home_page') }}">Strona główna</a></li>
-            <li class="breadcrumb-item active">{{ stage.designation }}</li>
+            <li class="breadcrumb-item" itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+                <a href="{{ path('home_page') }}" itemprop="url">
+                    <span itemprop="title">Strona główna</span>
+                </a>
+            </li>
+            <li class="breadcrumb-item active" itemscope itemtype="https://data-vocabulary.org/Breadcrumb">
+                <span itemprop="title">{{ stage.designation }}</span>
+                <meta itemprop="url" content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
+            </li>
         </ol>
     </nav>
     {# ------ End breadcrumb -------- #}
