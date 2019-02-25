@@ -17,6 +17,8 @@
 			<link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     {% endblock %}
 
+		<link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
+
   </head>
   <body>	
 		{% include 'navigation.html.twig' %}
