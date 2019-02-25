@@ -38,7 +38,7 @@ class ExamController extends AbstractController
     }
 
     /**
-     * @Route("/egzamin-zawodowy/{question_quantity}/{stage_id}-{friendly_stage_url}/{qualification_id}-{friendly_qualification_url}", name="generate_exam")
+     * @Route("/egzamin-zawodowy/{question_quantity}/{stage_id}/{qualification_id}/{friendly_stage_url}/{friendly_qualification_url}", name="generate_exam")
      */
     public function generateExam(Request $request, $qualification_id, $stage_id, $question_quantity, $friendly_qualification_url, $friendly_stage_url)
     {
