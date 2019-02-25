@@ -2,7 +2,7 @@
 <html lang="pl-PL">
   <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}Egzaminy zawodowe | Darmowe testy online.{% endblock %}</title>
+    <title>{% block title %}Egzaminy zawodowe - darmowe testy online.{% endblock %}</title>
 		<meta name="description" content="
 		{% block metaDescription %}Wybierz swój kierunek i rozwiązuj testy online za darmo. 
 			Skorzystaj z naszej bazy ponad 55000 pytań i 137 różnych zawodów!. 
@@ -16,6 +16,8 @@
 			<link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"> 
 			<link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     {% endblock %}
+
+		<link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
 
   </head>
   <body>	
