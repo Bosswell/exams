@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="checkbox-group answer" data-value="4">
                                         <div class="checkbox"></div>
-                                        <div class="checkbox-label">{{ question.answerD|raw }}</div>
+                                        <div class="checkbox-label">{{ question.answerD|e('html')|raw }}</div>
                                     </div>
                                 </div>
                             </div>
