@@ -50,7 +50,8 @@
     padding-left: 15px;
     width: calc(100% - 110px);
     border-bottom: 1px solid #000;
-    padding-bottom: 40px;
+    /* padding-bottom: 40px; */
+    padding-bottom: 20px;
 }
 
 .job-container:last-child .job-info {
