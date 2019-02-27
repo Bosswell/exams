@@ -33,7 +33,8 @@
 }
   
 .job-container {
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
+    margin-bottom: 15px;
 }
   
 .job-img-container {
