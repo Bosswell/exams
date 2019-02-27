@@ -84,11 +84,11 @@
 
             {% for stage in stages %}
                 <div class="job-container">
-                    <div class="job-img-container">
+                    {# <div class="job-img-container">
                         <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">
                             <img class="job-img" src="{{ asset('uploads/stage/'~stage.image_name) }}" alt="Wybierz kategorie" title="{{ stage.designation }}">
                         </a>
-                    </div>
+                    </div> #}
                     <div class="job-info">
                         <h3 class="info-title">
                             <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">{{ stage.designation }}</a>

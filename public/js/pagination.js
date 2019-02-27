@@ -25,11 +25,11 @@ $(function () {
                 jsonResponse.stages.forEach(function (stage) {
                     tmpExamsListHTML += 
                     '<div class="job-container">' +
-                        '<div class="job-img-container">' +
-                            '<a href="/'+ stage.friendly_url +'/wybierz-kwalifikacje/'+ stage.id +'">' +
-                                '<img class="job-img" src="uploads/stage/'+ stage.image_name +'" alt="Wybierz kategorie">' +
-                            '</a>' +
-                        '</div>' +
+                        // '<div class="job-img-container">' +
+                            // '<a href="/'+ stage.friendly_url +'/wybierz-kwalifikacje/'+ stage.id +'">' +
+                                // '<img class="job-img" src="uploads/stage/'+ stage.image_name +'" alt="Wybierz kategorie">' +
+                            // '</a>' +
+                        // '</div>' +
                         '<div class="job-info">' +
                             '<h3 class="info-title">' +
                             '<a href="/'+ stage.friendly_url +'/wybierz-kwalifikacje/'+ stage.id +'">'+ stage.designation +'</a>' +
