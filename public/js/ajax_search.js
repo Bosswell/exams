@@ -39,11 +39,11 @@ $(function () {
                         jsonResponse.forEach(element => {
                             tmpHTML += 
                                 '<div class="job-container">' +
-                                    '<div class="job-img-container">' +
-                                        '<a href="/'+ element.friendly_url +'/wybierz-kwalifikacje/'+ element.id +'">' +
-                                            '<img class="job-img" src="/uploads/stage/'+ element.image_name +'" alt="Wybierz kategorie">' +
-                                        '</a>' +
-                                    '</div>' +
+                                    // '<div class="job-img-container">' +
+                                        // '<a href="/'+ element.friendly_url +'/wybierz-kwalifikacje/'+ element.id +'">' +
+                                            // '<img class="job-img" src="/uploads/stage/'+ element.image_name +'" alt="Wybierz kategorie">' +
+                                        // '</a>' +
+                                    // '</div>' +
                                     '<div class="job-info">' +
                                         '<h3 class="info-title">' +
                                             '<a href="/'+ element.friendly_url +'/wybierz-kwalifikacje/'+ element.id +'">'+ element.designation + '</a>' +
