@@ -17,6 +17,16 @@
 			<link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     {% endblock %}
 
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135283511-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-135283511-1');
+		</script>
+
 		<link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
 
 		<link rel="icon" href="/images/favicon.png">
