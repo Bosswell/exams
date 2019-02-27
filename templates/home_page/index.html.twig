@@ -93,7 +93,16 @@
                         <h3 class="info-title">
                             <a href="{{ path('stage', {'id': stage.id, 'friendly_url': stage.friendly_url}) }}">{{ stage.designation }}</a>
                         </h3>
-                        <div class="info-text">{{ stage.stages_quantity }} kwalifikacje</div>
+                        <div class="info-text">
+                            {{ stage.stages_quantity }}
+                            {% if stage.stages_quantity == 1 %}
+                                kwalifikacja
+                            {% elseif stage.stages_quantity == 5 %}
+                                kwalifikacji
+                            {% else %}
+                                kwalifikacje
+                            {% endif %}
+                        </div>
                         <div class="info-text">{{ stage.qualification_quantity }} pytań w bazie</div>
                     </div>
                     <div style="clear:both"></div>
