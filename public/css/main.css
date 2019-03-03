@@ -35,6 +35,7 @@
 .job-container {
     /* margin-bottom: 30px; */
     margin-bottom: 15px;
+    border-bottom: 1px solid #000;
 }
   
 .job-img-container {
@@ -50,7 +51,7 @@
     float: left;
     padding-left: 15px;
     width: calc(100% - 110px);
-    border-bottom: 1px solid #000;
+    /* border-bottom: 1px solid #000; */
     /* padding-bottom: 40px; */
     padding-bottom: 20px;
 }
