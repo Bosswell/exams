@@ -9,7 +9,13 @@
         </p>
     </section>
 
-    <form id="contact-form" method="POST" action="#">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <form id="contact-form" method="POST" action="{{ path('mailer_contact') }}">
         <div class="form-row">
             <div class="col-12 col-md-6">
                 <input type="text" class="form-control" placeholder="Imię" id="name" name="name" required>
