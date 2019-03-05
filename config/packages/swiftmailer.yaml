@@ -1,3 +1,16 @@
 swiftmailer:
-    url: '%env(MAILER_URL)%'
-    spool: { type: 'memory' }
+    transport:  smtp
+    username:   '%env(MAILER_USERNAME)%'
+    password:   '%env(MAILER_PASSWORD)%'
+    host:   '%env(MAILER_HOST)%'
+    port:   587
+    encryption: ~
+    auth_mode:  ~
+    # spool:
+    #     type:file
+    #     path:"%kernel.cache_dir%/swiftmailer/spool"
+    sender_address: ~
+    antiflood:
+        threshold:  99
+        sleep:  0
+    logging:    "%kernel.debug%"
