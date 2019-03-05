@@ -18,8 +18,8 @@ class MailerController extends AbstractController
         $message = $request->get('message');
 
         if (!empty($name) || !empty($from) || !empty($message)) {
-            $email = (new \Swift_Message('Kontakt od '. $name))
-                ->setFrom($from)
+            $email = (new \Swift_Message('Kontakt od '. $name . ' - '. $from))
+                ->setFrom('reply@zawodowe-online.pl')
                 ->setTo('info@zawodowe-online.pl')
                 ->setBody(
                     $message
