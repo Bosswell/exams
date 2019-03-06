@@ -42,7 +42,7 @@ class ExamController extends AbstractController
      */
     public function generateExam(Request $request, $qualification_id, $stage_id, $question_quantity, $friendly_qualification_url, $friendly_stage_url)
     {
-        if (empty($qualification_id) || empty($question_quantity) || empty($stage_id) || !is_int($question_quantity) || !is_int($qualification_id) || !is_int($stage_id)) {
+        if (empty($qualification_id) || empty($question_quantity) || empty($stage_id) || !is_numeric($question_quantity) || !is_numeric($qualification_id) || !is_numeric($stage_id)) {
             return $this->redirectToRoute('home_page', [], 302);
         }
 
