@@ -43,11 +43,11 @@ class ExamController extends AbstractController
     public function generateExam(Request $request, $qualification_id, $stage_id, $question_quantity, $friendly_qualification_url, $friendly_stage_url)
     {
         if (empty($qualification_id) || empty($question_quantity)) {
-            return $this->redirectToRoute('homepage', null, 302);
+            return $this->redirectToRoute('home_page', [], 302);
         }
 
         if (!ExamValidator::isCorrectNumberOfQuestions($question_quantity)) {
-            return $this->redirectToRoute('homepage', null, 302);
+            return $this->redirectToRoute('home_page', [], 302);
         }
         
         $em = $this->getDoctrine()->getManager();
