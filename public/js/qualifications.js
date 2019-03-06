@@ -40,7 +40,7 @@ $(function() {
     let errors = [];
     let isOk = true;
 
-    if (form_qualification_id.val() === '' || form_question_quantity.attr('is-filled') === '') {
+    if (form_qualification_id.val() === '' || form_question_quantity.val() === '') {
       errors.push('Nie wybrano kwalifikacji lub ilości pytań.');
       isOk = false;
     }
