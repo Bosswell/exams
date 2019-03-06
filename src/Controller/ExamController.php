@@ -42,7 +42,7 @@ class ExamController extends AbstractController
      */
     public function generateExam(Request $request, $qualification_id, $stage_id, $question_quantity, $friendly_qualification_url, $friendly_stage_url)
     {
-        if (empty($qualification_id) || empty($question_quantity)) {
+        if (empty($qualification_id) || empty($question_quantity) || empty($stage_id) || !is_int($question_quantity) || !is_int($qualification_id) || !is_int($stage_id)) {
             return $this->redirectToRoute('home_page', [], 302);
         }
 
@@ -58,7 +58,7 @@ class ExamController extends AbstractController
         $exam = new Exam($questions);
 
         if (empty($questions)) {
-            throw new NotFoundHttpException("Questions has been not found");
+            return $this->redirectToRoute('home_page', [], 302);
         }
 
         $request->getSession()->set('exam', $exam);
